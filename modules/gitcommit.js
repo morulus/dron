@@ -6,9 +6,13 @@ module.exports = function(options) {
 		var argsPairs = _.toPairs(options.args||{}).map(function(v, key) {
 			return key+("string"===typeof v ? (' '+v) : '');
 		}).join(' ');
-		output = spawn.sync("npm", (["install"]).concat(options.dependencies).concat(argsPairs), {
-	      stdio: ["ignore", "pipe", "inherit"]
-	    });
+    spawn.sync("git", ["add", "-A"], {
+      stdio: ["ignore", "inherit", "inherit"]
+    });
+		spawn.sync("git", (["commit", "-m", ''+options.message.replace('"', '\\"')+'']).concat(argsPairs), {
+      stdio: ["ignore", "inherit", "inherit"]
+    });
+    this.log('Commit: '+options.message);
 		return true;
 	}
 }

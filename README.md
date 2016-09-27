@@ -33,10 +33,12 @@ The modules of Dron - it is just a functions. If you need to create your own aut
 
 For example, we need an automation module which increase minor version of your package. It will be something like that:
 ```js
+
 function increaseMinorVersion() {
   var packageJson = require('./package.json');
   packageJson.version = packageJson.version.split('.').map(function(v, index) { return index===1 ? parseInt(v)+1 : v; }).join('.');
   fs.writeFileSync(require.resolve('./package.json'), JSON.stringify(packageJson, null, 2), 'utf-8');
+  return true;
 }
 ```
 
@@ -44,7 +46,7 @@ Now, when we have function `increaseMinorVersion`, we can make it executable by 
 
 ```js
 function increaseMinorVersion() {
-  var packageJson = this.touch('./package.json');
+  var packageJson = this.touch('./package.json').require();
   packageJson.version = packageJson.version.split('.').map(function(v, index) { return index===1 ? parseInt(v)+1 : v; }).join('.');
   fs.writeFileSync(require.resolve('./package.json'), JSON.stringify(packageJson, null, 2), 'utf-8');
   return true;
@@ -65,18 +67,18 @@ Oh. I almost forget: it will be not bed idea to commit changes. Let's add some c
 
 ```js
 function increaseMinorVersion() {
-  var packageJson = this.touch('./package.json');
+  var packageJson = this.touch('package.json').require();
   packageJson.version = packageJson.version.split('.').map(function(v, index) { return index===1 ? parseInt(v)+1 : v; }).join('.');
   fs.writeFileSync(require.resolve('./package.json'), JSON.stringify(packageJson, null, 2), 'utf-8');
-  return packageJson.version;
+  return packageJson;
 }
 
 module.exports = function increaseMinorVersionFactoy() {
   return function() {
     return this.run(increaseMinorVersion)
-    .then(function(version) {
+    .then(function(packageJSON) {
       return this.run('gitcommit', {
-        message: 'Minor release '+version
+        message: 'Minor release '+packageJSON.version
       });
     });
   }
@@ -95,7 +97,7 @@ module.export = function increateAndPushFactory() {
   return function increateAndPush() {
     return this.run('increase-package-minor-version')
     .then(function() {
-      return this.run('gitpush');
+      return someWayGitPush;
     });
   }
 }

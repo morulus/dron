@@ -20,7 +20,8 @@ const modules = {
 	confirm: require('./modules/confirm.js'),
 	message: require('./modules/message.js'),
 	debug: require('./modules/debug.js'),
-	prompt: require('./modules/prompt.js')
+	prompt: require('./modules/prompt.js'),
+	gitcommit: require('./modules/gitcommit.js')
 }
 
 function Dron(process, argv) {
