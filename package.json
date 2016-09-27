@@ -1,7 +1,7 @@
 {
   "name": "dron",
   "version": "0.0.1",
-  "description": "Fast & furious minimalist task's manager",
+  "description": "Fast, furious & minimalist tool, which does a routine for you",
   "main": "./Dron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +11,7 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "colors": "^1.1.2",
+    "cross-spawn": "^4.0.2",
     "ejs": "^2.5.2",
     "inquirer": "^1.1.3",
     "minimist": "^1.2.0",
@@ -33,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dronjs/dron.git"
+    "url": "git+https://github.com/morulus/dron.git"
   },
   "bugs": {
     "url": "https://github.com/dronjs/dron/issues"

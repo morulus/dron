@@ -1,8 +1,8 @@
 var path = require('path');
 var requireg = require('requireg');
-var Workflow = require('./Workflow.js');
+var Workflow = require('./lib/Workflow.js');
 var chalk = require('chalk');
-var npmPackageExpr = require('./exprs.js').npmPackageExpr;
+var npmPackageExpr = require('./lib/exprs.js').npmPackageExpr;
 
 var slashrize= function(url) {
 	url=url.replace(/\\/g, "/").replace('//', '/');
@@ -101,3 +101,5 @@ Dron.prototype = {
 		}
 	}
 }
+
+module.exports = Dron;
