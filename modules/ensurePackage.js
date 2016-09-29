@@ -8,12 +8,15 @@ function ensurePackage() {
 		var correct = true,
 		packageJson;
 		try {
-		    packageJson = require(require.resolve(this.touch('package.json').fullname));
+		    packageJson = require(this.touch('package.json').fullname);
 		} catch (e) {
+			this.warn('package.json not found');
+			console.log(e);
 			correct = false;
 		}
 
 		if ("object"!==typeof packageJson) {
+			this.warn('invalid package.json');
 			correct = false;
 		}
 

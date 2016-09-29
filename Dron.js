@@ -21,7 +21,8 @@ const modules = {
 	message: require('./modules/message.js'),
 	debug: require('./modules/debug.js'),
 	prompt: require('./modules/prompt.js'),
-	gitcommit: require('./modules/gitcommit.js')
+	gitcommit: require('./modules/gitcommit.js'),
+	init: require('./modules/init.js')
 }
 
 function Dron(process, argv) {
@@ -35,6 +36,7 @@ function Dron(process, argv) {
 		showErrors: !!argv['show-errors']
 	};
 	this.process = process;
+	this.package = require(path.join(__dirname, 'package.json'));
 }
 
 Dron.prototype = {
@@ -42,6 +44,14 @@ Dron.prototype = {
 	usePackage: function(packageName, argv) {
 
 		var dron = this.requirePackage(packageName);
+		/**
+		 * Valiate module
+		 */
+		if ("function"!==typeof dron) {
+			console.log(chalk.red('Invalid module `'+packageName+'`. Make sure that module exports the function.'));
+			process.exit(0);
+		}
+
 		if (!dron) {
 			console.log(('Please, run command `npm i '+packageName+' -g`').green);
 		} else {
@@ -88,7 +98,7 @@ Dron.prototype = {
 							var shortPackageName = (packageName.split('/').pop());
 							console.log(chalk.red('Package '+shortPackageName+' has an errors. Run `dron debug '+packageName+'` to find a problem.'));
 							if (config.showErrors) {
-								throw e;
+								console.log(e, e.stack);
 							}
 							process.exit(0);
 						}
