@@ -21,7 +21,10 @@ function createFiles(package) {
 	var packageName = camelize(package.name);
 	return function() {
 		this.touch(package.main).write("/**\n Dron module `"+package.name+"`*\n*/\nfunction "+packageName+"() {\n\n}\n\nmodule.exports = function factory(argv) {\n	return "+packageName+";\n}");
-		this.touch('README.md', package.name+"\n--\n\n");
+		this.touch('README.md').safeWrite(package.name+"\n--\n\n");
+		return this.run('gitignore').then(function() {
+			return;
+		});
 		return true;
 	}
 	return true;

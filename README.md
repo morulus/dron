@@ -1,4 +1,4 @@
-Dron is a fast, furious & minimalist tool, which does a routine for you.
+Node.js utility for automatization regular operations of development
 
 # Install CLI
 ```terminal
