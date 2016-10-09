@@ -9,34 +9,40 @@ function ensurePackage() {
 		packageJson;
 		try {
 		    packageJson = require(this.touch('package.json').fullname);
+				if ("object"!==typeof packageJson) {
+					this.warn('invalid package.json');
+					correct = false;
+				}
 		} catch (e) {
-			this.warn('package.json not found');
-			console.log(e);
+			//this.warn('package.json not found');
 			correct = false;
 		}
-
-		if ("object"!==typeof packageJson) {
-			this.warn('invalid package.json');
-			correct = false;
-		}
-
 		return new Promise(function(resolve, reject) {
-			if (correct) {
-				console.log(chalk.gray('Package.json exists'));
-				resolve(packageJson);
-			} else {
-			  	var peers = [],
-			  	output = spawn.sync("npm", ["init"], {
-			      stdio: [process.stdin, process.stdout, "inherit"]
-			    });
-			    try {
-			    	var newPackageJson = require(require.resolve(this.touch('package.json').fullname));
-			    	console.log(chalk.green('Package.json successfully created'));
-			    	resolve(newPackageJson);
-			    } catch(e) {
-			    	resolve(false);
-			    }
-			}
+			(correct ? Promise.resolve(true) : this.run('confirm', {
+				question: 'Package.json is not exists. Do you want to create it?'
+			}))
+			.then(function(answer) {
+				if (!answer) {
+					resolve(false);
+				} else {
+						if (!correct) {
+							var peers = [],
+					  	output = spawn.sync("npm", ["init"], {
+					      stdio: [process.stdin, process.stdout, "inherit"]
+					    });
+					    try {
+					    	var newPackageJson = require(require.resolve(this.touch('package.json').fullname));
+					    	console.log(chalk.green('Package.json successfully created'));
+					    	resolve(newPackageJson);
+					    } catch(e) {
+					    	resolve(false);
+					    }
+						} else {
+							resolve(packageJson);
+						}
+				}
+			})
+			.catch(reject);
 		}.bind(this));
 	}
 }
