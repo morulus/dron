@@ -1,13 +1,13 @@
 {
   "name": "dron",
-  "version": "0.0.2",
-  "description": "Fast, furious & minimalist tool, which does a routine for you",
+  "version": "0.0.3",
+  "description": "Utility for development processes automation",
   "main": "./Dron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vladimir Kalmykov <luciusmorulus@gmail.com>",
-  "license": "MIT",
+  "license": "BSD-2-clause",
   "dependencies": {
     "chalk": "^1.1.3",
     "colors": "^1.1.2",
