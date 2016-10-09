@@ -1,18 +1,27 @@
-Node.js utility for automatization regular operations of development
+Utility for development processes automation
+==
 
-# Install CLI
+# Usage
+First, install Dron CLI
 ```terminal
 npm i dron-cli -g
 ```
 
-# Using automation
-Modules of Dron is a mini programs, which can do some job for you. It can generate scaffold for your application or adds to your existing application some necessary files.
+Search module you need in [modules list](http://morulus.github.io/dron/modules/). Install it globally:
 
-Before usage modules you should install it globally:
+```
+npm install dron-[module_name] -g
+```
+
+And use it:
 
 ```terminal
-npm i dron-webpack-babel-postcss-jsx -g
+dron [package-name]
 ```
+
+For more information, read the [documentation](http://morulus.github.io/dron/docs/).
+
+# Why
 
 For example, when i need to add the Webpack to my application's folder, I prefer to use Dron, because, without it, to deploy Webpack bundler in my app folder, i should:
 
@@ -24,12 +33,12 @@ For example, when i need to add the Webpack to my application's folder, I prefer
 In the particular case I find it easier to copy the code from another application. Instead, I wrote a module that does that job for me and now, when I need to add the Webpack bundler to my application folder, all I need to do is run command in terminal:
 
 ```terminal
-dron webpack-babel-postcss-jsx
+dron webpack-init
 ```
 
 ## Creating modules
 
-The modules of Dron - it is just a functions. If you need to create your own automation, you should to create a function, which perform that automation. Then, put your function into the shape of npm package and name it with prefix `dron-`;
+The modules of Dron is a npm module, exported a function. If you need to create your own automation, you should to create a function, which perform that you need. Then, put your function into the shape of npm package and name it with prefix `dron-`;
 
 For example, we need an automation module which increase minor version of your package. It will be something like that:
 ```js
@@ -114,4 +123,4 @@ Idea and performance: Vladimir Kalmykov <luciusmorulus@gmail.com>
 DronJs is my solo project. One man not army, so I will be inspired by any help in the project's development. You can write me to e-mail [email](luciusmorulus@gmail.com) with proposal for contribution.
 
 # License
-Under MIT License.
+BSD-2-clause © Vladimir Kalmykov
