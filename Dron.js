@@ -26,11 +26,11 @@ const modules = {
 }
 
 function Dron(process, argv) {
-	console.log(chalk.yellow('    *'));
-	console.log('   _|_');
-	console.log(('|_(')+chalk.blue('o')+' '+chalk.blue('o')+')_|');
-	console.log(('  | @ |'));
-	console.log(('   ---'));
+	// console.log(chalk.yellow('    *'));
+	// console.log('   _|_');
+	// console.log(('|_(')+chalk.blue('o')+' '+chalk.blue('o')+')_|');
+	// console.log(('  | @ |'));
+	// console.log(('   ---'));
 
 	this.config = {
 		showErrors: !!argv['show-errors']
