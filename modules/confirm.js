@@ -6,9 +6,8 @@ module.exports = function(config) {
 			name: 'question',
 			type: 'confirm',
 			message: config.question,
-			default: false
+			default: config.default || true
 		}]).then(function (answers) {
-			
 			return answers.question;
 		});
 	}
