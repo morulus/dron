@@ -252,6 +252,35 @@ body {
   transition: background 5s ease;
 }
 
+body a {
+  text-decoration: none;
+}
+
+body >header {
+  font-family: 'Dosis', sans-serif;
+  top:0;
+  left:0;
+  height:50px;
+  position: fixed;
+  width:100%;
+}
+
+body >header div.right {
+  margin:0 0 0 auto;
+  display: table;
+}
+
+body >header nav {
+  line-height: 50px;
+  padding: 0 60px;
+}
+
+body >header nav a {
+  text-decoration: none;
+  font-size: 26px;
+  color:inherit;
+}
+
 body >div.area {
   background: -webkit-linear-gradient(top, rgba(226, 223, 223, 0) 0%, rgb(255, 255, 255) 0.5%, #ececec 100%);
   background: linear-gradient(to bottom, rgba(226, 223, 223, 0) 0%, rgb(255, 255, 255) 0.5%, #ececec 100%);

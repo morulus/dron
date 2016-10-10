@@ -52,31 +52,23 @@ this["dron"] =
 	});
 	exports.randomizeContent = exports.followUserMouse = undefined;
 
-	var _followMouse = __webpack_require__(4);
+	var _followMouse = __webpack_require__(1);
 
 	var _followMouse2 = _interopRequireDefault(_followMouse);
 
-	var _randomizeContent2 = __webpack_require__(5);
+	var _randomizeContent2 = __webpack_require__(3);
 
 	var _randomizeContent3 = _interopRequireDefault(_randomizeContent2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(1);
+	__webpack_require__(4);
 
 	exports.followUserMouse = _followMouse2.default;
 	exports.randomizeContent = _randomizeContent3.default;
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 2 */,
-/* 3 */,
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -86,7 +78,7 @@ this["dron"] =
 	});
 	exports.default = followUserMouse;
 
-	var _getRandomInt = __webpack_require__(6);
+	var _getRandomInt = __webpack_require__(2);
 
 	var _getRandomInt2 = _interopRequireDefault(_getRandomInt);
 
@@ -154,7 +146,7 @@ this["dron"] =
 	  return Math.abs(n) > max ? max * (n / Math.abs(n)) : n;
 	}
 
-	function followUserMouse(element, h1Element, pupilElement) {
+	function followUserMouse(element, pupilElement) {
 
 	  function transform(X, Y) {
 	    element.style.transform = "perspective(750px) scale(1) rotateX(" + X + "deg) rotateY(" + Y + "deg) translateZ(130px)";
@@ -246,13 +238,28 @@ this["dron"] =
 	    console.log(rc);
 	    document.body.style.backgroundColor = rc;
 	    element.style.backgroundColor = rc;
-	    h1Element.style.color = rc;
+	    document.body.style.color = rc;
 	  }, 10000);
 	}
 	module.exports = exports['default'];
 
 /***/ },
-/* 5 */
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = getRandomInt;
+	function getRandomInt(min, max) {
+	    return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	module.exports = exports["default"];
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -262,7 +269,7 @@ this["dron"] =
 	});
 	exports.default = randomizeContent;
 
-	var _getRandomInt = __webpack_require__(6);
+	var _getRandomInt = __webpack_require__(2);
 
 	var _getRandomInt2 = _interopRequireDefault(_getRandomInt);
 
@@ -276,19 +283,10 @@ this["dron"] =
 	module.exports = exports['default'];
 
 /***/ },
-/* 6 */
+/* 4 */
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = getRandomInt;
-	function getRandomInt(min, max) {
-	    return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
-	module.exports = exports["default"];
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

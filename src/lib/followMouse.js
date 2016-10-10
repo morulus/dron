@@ -65,7 +65,7 @@ function limitMax(n, max) {
   return Math.abs(n)>max ? max*(n/Math.abs(n)) : n;
 }
 
-export default function followUserMouse(element, h1Element, pupilElement) {
+export default function followUserMouse(element, pupilElement) {
 
   function transform(X, Y) {
     element.style.transform = "perspective(750px) scale(1) rotateX("+X+"deg) rotateY("+Y+"deg) translateZ(130px)";
@@ -157,6 +157,6 @@ export default function followUserMouse(element, h1Element, pupilElement) {
      console.log(rc);
      document.body.style.backgroundColor = rc;
      element.style.backgroundColor = rc;
-     h1Element.style.color = rc;
+     document.body.style.color = rc;
    }, 10000);
 }
