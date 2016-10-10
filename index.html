@@ -1,1 +1,46 @@
-Hello, World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="dist/dronpage.css">
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+  <script src="dist/dronpage.js"></script>
+  <title>Dron</title>
+</head>
+<body>
+  <div class="area">
+    <div>
+      <section class="stage">
+        <figure class="dron">
+          <span class="body">
+            <span class="iris" id="evilEye">
+              <div id="pupil">
+                <i id="eyeContent">#</i>
+              </div>
+            </span>
+            <!-- <span class="mark" id="mark"><i>v0.0.3</i></span> -->
+          </span>
+          <span class="shadow"></span>
+        </figure>
+      </section>
+    </div>
+    <content id="content">
+      <section>
+        <h1 id="h1">Dron</h1>
+        <h2 id="h2">Utility for development processes automation</h2>
+        <pre><code class="terminal">npm i dron-cli -g</code></pre>
+      </section>
+      <section>
+
+      </section>
+    </content>
+  </div>
+
+</body>
+<script>
+  dron.followUserMouse(document.getElementById('evilEye'), document.getElementById('content'), document.getElementById('pupil'));
+  dron.randomizeContent(document.getElementById('eyeContent'))
+</script>
+</html>
