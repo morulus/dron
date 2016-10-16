@@ -129,7 +129,7 @@ Dron.prototype = {
 						return config.justResolve ? requireg.resolve(packageName) : requireg(packageName);
 					} catch(e) {
 						if (e.code=='MODULE_NOT_FOUND'||~e.message.indexOf('Cannot find global module')) {
-							console.log(chalk.blue('Package '+packageName+' is missed...'));
+							console.log(chalk.blue('Package '+packageName+' is missed and package will be installed now.'));
 							// Module is not exists. Lets try to install it.
 							if (!config.lastTry&&preInstallDronPackage.call(this, packageName)) {
 								return this.requirePackage(moduleName, Object.assign({}, forceConfig, {
