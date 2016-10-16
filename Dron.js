@@ -1,6 +1,6 @@
 var path = require('path');
 var requireg = require('requireg');
-var Workflow = require('./lib/Workflow.js');
+var Workspace = require('./lib/Workspace.js');
 var chalk = require('chalk');
 var npmPackageExpr = require('./lib/exprs.js').npmPackageExpr;
 var spawn = require('cross-spawn');
@@ -93,8 +93,8 @@ Dron.prototype = {
 			console.log(('Please, run command `npm i '+packageName+' -g`').green);
 		} else {
 			try {
-				var workflow = new Workflow(this);
-				return workflow.run(dron, argv);
+				var workspace = new Workspace(this);
+				return workspace.run(dron, argv);
 			} catch(e) {
 				if (this.config.showErrors){
 					throw e;
