@@ -3,6 +3,22 @@ var requireg = require('requireg');
 var Workflow = require('./lib/Workflow.js');
 var chalk = require('chalk');
 var npmPackageExpr = require('./lib/exprs.js').npmPackageExpr;
+var spawn = require('cross-spawn');
+var stream = require('stream');
+// var stream = require('stream');
+// var util = require('util');
+// function EchoStream () { // step 2
+//   stream.Writable.call(this);
+// };
+// util.inherits(EchoStream, stream.Writable); // step 1
+// EchoStream.prototype._write = function (chunk, encoding, done) { // step 3
+//   console.log(chunk.toString());
+//   done();
+// }
+//
+// var myStream = new EchoStream(); // instanciate your brand new stream
+//
+//
 
 var slashrize= function(url) {
 	url=url.replace(/\\/g, "/").replace('//', '/');
@@ -23,6 +39,27 @@ const modules = {
 	prompt: require('./modules/prompt.js'),
 	gitcommit: require('./modules/gitcommit.js'),
 	init: require('./modules/init.js')
+}
+
+function preInstallDronPackage(packageName) {
+	var writable = new stream.Writable({
+	  write: function(chunk, encoding, next) {
+	    console.log(chunk.toString());
+	    next();
+	  }
+	});
+	var result = spawn.sync('npm', ['install', packageName, '-g'], Object.assign({
+			stdio: [process.stdin, 'pipe', "inherit"]
+		}, {}));
+	var response = result.stdout.toString('utf8');
+	if (~response.indexOf('Registry returned 404')) {
+		console.log(chalk.red('Package is not exists'));
+		return false;
+	} else {
+		return true;
+	}
+	//console.log('result', result);
+	//result.stdout.pipe(writable);
 }
 
 function Dron(process, argv) {
@@ -91,14 +128,22 @@ Dron.prototype = {
 					try {
 						return config.justResolve ? requireg.resolve(packageName) : requireg(packageName);
 					} catch(e) {
-						if (e.code=='MODULE_NOT_FOUND') {
+						if (e.code=='MODULE_NOT_FOUND'||~e.message.indexOf('Cannot find global module')) {
 							console.log(chalk.blue('Package '+packageName+' is missed...'));
-							return false;
+							// Module is not exists. Lets try to install it.
+							if (!config.lastTry&&preInstallDronPackage.call(this, packageName)) {
+								return this.requirePackage(moduleName, Object.assign({}, forceConfig, {
+									lastTry: true
+								}));
+							} else {
+								process.exit(0);
+							}
 						} else {
 							var shortPackageName = (packageName.split('/').pop());
+
 							console.log(chalk.red('Package '+shortPackageName+' has an errors. Run `dron debug '+packageName+'` to find a problem.'));
 							if (config.showErrors) {
-								console.log(e, e.stack);
+								console.log(e.message, e.stack);
 							}
 							process.exit(0);
 						}
