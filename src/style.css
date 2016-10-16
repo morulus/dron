@@ -317,7 +317,6 @@ body {
         transform: perspective(700px) translateY(-25px);
       }
       pre {
-        display: table;
         margin: 0 auto;
         background-color: #0a0a0a;
         border-radius: 6px;
@@ -325,6 +324,23 @@ body {
         padding: 12px;
         font-size: 18px;
         font-family: -webkit-body;
+        &.presentation {
+          display: table;
+        }
+        &.whiteTerminal {
+          background-color:white;
+          color:black;
+          font-size:0.8em;
+          .greenlog {
+            color:green;
+          }
+          .graylog {
+            color:gray;
+          }
+          .bluelog {
+            color:blue;
+          }
+        }
       }
 
       article {
@@ -402,5 +418,12 @@ footer {
       color:black;
       font-size: 130% !important;
     }
+  }
+}
+
+article {
+  a {
+    color: #ff0fc0;
+    font-weight: 700;
   }
 }
