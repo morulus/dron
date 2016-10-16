@@ -49,11 +49,12 @@ function preInstallDronPackage(packageName) {
 	  }
 	});
 	var result = spawn.sync('npm', ['install', packageName, '-g'], Object.assign({
-			stdio: [process.stdin, 'pipe', "inherit"]
+			stdio: ['pipe', 'pipe', "pipe"]
 		}, {}));
-	var response = result.stdout.toString('utf8');
+	var response = result.stderr.toString('utf8');
+
 	if (~response.indexOf('Registry returned 404')) {
-		console.log(chalk.red('Package is not exists'));
+		console.log(chalk.red('Package `'+packageName+'` is not found or corrupt'));
 		return false;
 	} else {
 		return true;
@@ -129,7 +130,7 @@ Dron.prototype = {
 						return config.justResolve ? requireg.resolve(packageName) : requireg(packageName);
 					} catch(e) {
 						if (e.code=='MODULE_NOT_FOUND'||~e.message.indexOf('Cannot find global module')) {
-							console.log(chalk.blue('Package '+packageName+' is missed and package will be installed now.'));
+							console.log(chalk.blue('Autoinstall package...'));
 							// Module is not exists. Lets try to install it.
 							if (!config.lastTry&&preInstallDronPackage.call(this, packageName)) {
 								return this.requirePackage(moduleName, Object.assign({}, forceConfig, {

@@ -21,10 +21,15 @@ function createFiles(package) {
 	var packageName = camelize(package.name);
 	return function() {
 		this.touch(package.main).write("/**\n Dron module `"+package.name+"`*\n*/\nfunction "+packageName+"() {\n\n}\n\nmodule.exports = function factory(argv) {\n	return "+packageName+";\n}");
-		this.touch('README.md').safeWrite(package.name+"\n--\n\n");
-		return this.run('gitignore').then(function() {
-			return;
-		});
+		return [
+			function() {
+				return this.touch('README.md').safeWrite(package.name+"\n--\n\n");
+			},
+			function() {
+				return this.touch('gitignore.md').safeWrite("node_modules");
+			}
+		];
+
 		return true;
 	}
 	return true;
@@ -35,7 +40,7 @@ function createFiles(package) {
  */
 function createPackageJson() {
 	return function() {
-		
+
 		this.spawn('npm', ['init'], {
 			stdio: [process.stdin, process.stdout, "inherit"]
 		});
@@ -68,7 +73,7 @@ function deployBoilerplate() {
 			description: '',
 			keywords: ['dron','module']
 		};
-		
+
 		if (!npmDronModuleExpr.exec(packageJson.name)) {
 			delete packageJson.name;
 		}
@@ -89,7 +94,7 @@ function checkPackageJson() {
 				if (answer) {
 					return deployBoilerplate;
 				} else {
-					return null;
+					return false;
 				}
 			})
 		} else {

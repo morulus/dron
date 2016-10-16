@@ -222,6 +222,3 @@ Parse file with Ejs ([Embedded JavaScript](http://www.embeddedjs.com/)).
 ```js
 this.touch(path.join(__dirname, 'templates', 'index.ejs')).ejs(json);
 ```
-
-# License
-BSD-2-clause © Vladimir Kalmykov
