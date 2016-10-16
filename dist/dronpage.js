@@ -4891,7 +4891,7 @@ this["dron"] =
 	exports.search = search;
 	exports.getDrons = getDrons;
 	function search(packageName) {
-	  return fetch('http://npmsearch.com/query?q=' + packageName + '&fields=name,description,version,author,keywords,url').then(function (res) {
+	  return fetch('https://npmsearch.com/query?q=' + packageName + '&fields=name,description,version,author,keywords,url').then(function (res) {
 	    return res.json();
 	  });
 	}

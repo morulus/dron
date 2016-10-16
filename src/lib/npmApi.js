@@ -1,5 +1,5 @@
 export function search(packageName) {
-  return fetch('http://npmsearch.com/query?q='+packageName+'&fields=name,description,version,author,keywords,url')
+  return fetch('https://npmsearch.com/query?q='+packageName+'&fields=name,description,version,author,keywords,url')
   .then((res) => res.json());
 }
 
