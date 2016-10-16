@@ -1,9 +1,10 @@
+
 var http = require("http"),
 url = require("url"),
 fs = require('fs'),
 path = require('path'),
 here = process.cwd() ,
-extTypes = { 
+extTypes = {
 		"3gp"   : "video/3gpp"
 		, "a"     : "application/octet-stream"
 		, "ai"    : "application/postscript"
@@ -193,7 +194,7 @@ dispenser = function(response, status, data) {
 			contentType = 'text/plain';
 			content = 'Not found';
 		break;
-		
+
 		case 200:
 			statusCode=200;
 			contentType = data['Content-Type']||'text/plain';
@@ -206,7 +207,7 @@ dispenser = function(response, status, data) {
 			content = 'Server error';
 		break;
 	}
-	
+
 	 response.writeHead(status, {
 	 	"Content-Type": contentType,
 	 	"Access-Control-Allow-Origin": "*"
@@ -255,7 +256,7 @@ redirect = function(response, pathname) {
 router = function(request, response) {
 	var pathname = here+url.parse(request.url).pathname;
 	redirect(response, pathname);
-	
+
 },
 port=process.argv[2]||3500.
 http.createServer(function(request, response) {

@@ -1,4 +1,5 @@
 import getRandomInt from './getRandomInt';
+import _ from 'underscore';
 
 function cos(ra) {
 	if ( (ra == 270) || (ra == 90) ) return 0;
@@ -67,10 +68,10 @@ function limitMax(n, max) {
 
 export default function followUserMouse(element, pupilElement) {
 
-  function transform(X, Y) {
+  var transform = _.debounce((X, Y) => {
     element.style.transform = "perspective(750px) scale(1) rotateX("+X+"deg) rotateY("+Y+"deg) translateZ(130px)";
     // markElement.style.transform = "perspective(750px) scale(1) rotateX("+(X+50)+"deg) rotateY("+(Y)+"deg) translateZ(130px)";
-  }
+  }, 300);
 
   var area = {
     width:document.body.clientWidth,
@@ -140,23 +141,26 @@ export default function followUserMouse(element, pupilElement) {
     }
   }, 1000);
 
+	function doRandomize() {
+
+		var rc = colors[getRandomInt(0, colors.length-1)];
+		console.log(rc);
+		document.body.style.backgroundColor = rc;
+		element.style.backgroundColor = rc;
+		document.body.style.color = rc;
+		document.body.style.fill = rc;
+	}
+
   /**
    * Randomize colors
    */
    var colors = [
      "#1e0fff",
-     "#55ff0f",
      "#ff0f0f",
      "#c40fff",
      "#ff0fc0",
      "#0f85ff"
    ];
-   setInterval(function() {
-
-     var rc = colors[getRandomInt(0, colors.length-1)];
-     console.log(rc);
-     document.body.style.backgroundColor = rc;
-     element.style.backgroundColor = rc;
-     document.body.style.color = rc;
-   }, 10000);
+   setInterval(doRandomize, 10000);
+	 doRandomize();
 }

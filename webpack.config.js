@@ -3,6 +3,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var postcssimport = require('postcss-import');
 var autoprefixer = require('autoprefixer')({browsers: ['> 1%','ie >= 9']});
 var postcssnested = require('postcss-nested');
+var postcsssimplevars = require('postcss-simple-vars');
 module.exports = {
 	entry: {
 		dronpage: './src/dronpage.js'
@@ -17,7 +18,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract("style","raw!postcss")
+				loader: "style!css!postcss"//ExtractTextPlugin.extract("style","css!postcss")
 			},
 			{
 				test: /\.js[x]?$/,
@@ -40,9 +41,12 @@ module.exports = {
 			}
 		]
 	},
+	resolve: {
+		root: path.resolve(__dirname, './src')
+	},
 	plugins: [
-		new ExtractTextPlugin("[name].css")
+		//new ExtractTextPlugin("[name].css")
 	],
 	extensions: [],
-	postcss: function postcssPlugins() { return [postcssimport, autoprefixer, postcssnested]; }
+	postcss: function postcssPlugins() { return [postcssimport, postcsssimplevars, autoprefixer, postcssnested]; }
 };
