@@ -71,7 +71,7 @@ function Dron(process, argv) {
 	// console.log(('   ---'));
 
 	this.config = {
-		showErrors: !!argv['show-errors']
+		showErrors: !!argv['display-errors']
 	};
 	this.process = process;
 	this.package = require(path.join(__dirname, 'package.json'));
@@ -100,7 +100,7 @@ Dron.prototype = {
 				if (this.config.showErrors){
 					throw e;
 				} else {
-					console.log(chalk.red('Package '+packageName+' has runtime errors. Run `dron '+packageName+' --show-errors` for ditails.'));
+					console.log(chalk.red('Package '+packageName+' has runtime errors. Run `dron '+packageName+' --display-errors` for ditails.'));
 				}
 			}
 		}
