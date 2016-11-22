@@ -17,7 +17,8 @@
     "babel-root-import": "^4.1.5",
     "babel-runtime": "^6.18.0",
     "dron-constants": "github:morulus/dron-constants",
-    "inquirer": "^1.2.3"
+    "inquirer": "^1.2.3",
+    "loopback-run": "github:morulus/loopback-run"
   },
   "keywords": [
     "cli-app",
