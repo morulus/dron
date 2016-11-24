@@ -9,16 +9,16 @@
   "author": "Vladimir Kalmykov <luciusmorulus@gmail.com>",
   "license": "BSD-2-clause",
   "dependencies": {
-    "babel-core": "^6.18.2",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-module-resolver": "^2.3.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-root-import": "^4.1.5",
-    "babel-runtime": "^6.18.0",
     "dron-constants": "github:morulus/dron-constants",
     "inquirer": "^1.2.3",
     "loopback-run": "github:morulus/loopback-run"
+  },
+  "devDependencies": {
+    "babel-plugin-add-module-exports": "@0.2.1",
+    "babel-plugin-module-resolver": "@2.3.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "@6.18.0",
+    "babel-register": "@6.18.0"
   },
   "keywords": [
     "cli-app",
