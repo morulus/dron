@@ -9,9 +9,11 @@
   "author": "Vladimir Kalmykov <luciusmorulus@gmail.com>",
   "license": "BSD-2-clause",
   "dependencies": {
-    "dron-constants": "github:morulus/dron-constants",
+    "cross-spawn": "^5.0.1",
+    "dron-constants": "morulus/dron-constants",
     "inquirer": "^1.2.3",
-    "loopback-run": "github:morulus/loopback-run"
+    "loopback-run": "github:morulus/loopback-run",
+    "requireg": "^0.1.6"
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "@0.2.1",
