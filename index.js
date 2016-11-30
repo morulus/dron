@@ -1,2 +1,2 @@
-exports.runFile = require('./lib/runFile.js');
+exports.runModule = require('./lib/runModule.js');
 exports.runPackage = require('./lib/runPackage.js');
