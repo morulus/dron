@@ -1,6 +1,6 @@
 {
   "name": "erector",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Utility for development processes automation",
   "main": "./Dron.js",
   "scripts": {
