@@ -1,8 +1,8 @@
 Utility for development processes automation
 ==
 
-[Web-page](https://morulus.github.io/dron)   
-[Developer guide](http://github.com/morulus/dron/blob/master/docs/dg.md)
+[Web-page](https://morulus.github.io/erector)   
+[Developer guide](http://github.com/morulus/erector/blob/master/docs/dg.md)
 
 # Developning modules
 
@@ -17,18 +17,18 @@ export default function* myModule(props) {
 }
 ```
 
-Your first dron module is ready. You can run it now.
+Your first erector module is ready. You can run it now.
 ```
-dron mymodule.js
+erector mymodule.js
 Hello, Dron!
 ```
 
 ### Using Operators
 
-Operators is a helper functions provided by dron.
+Operators is a helper functions provided by erector.
 
 ```js
-import { readFile } from 'dron';
+import { readFile } from 'erector';
 
 export default function* displayMyReadme(props) {
   let readme = yield readFile('./README.md');
@@ -36,16 +36,16 @@ export default function* displayMyReadme(props) {
 }
 ```
 
-To use it effectively, you must [learn to operators](http://github.com/morulus/dron/blob/master/docs/operators.md).
+To use it effectively, you must [learn to operators](http://github.com/morulus/erector/blob/master/docs/operators.md).
 
 # Why
 
 Dron is utility to create utils. It is not boilerplate generator. Dron is tool for development automation.
 
-How to use. You can use existing modules. You do not need to install it. Dron use prefix `dron-` for all modules. So you can call any existing at npm module in any time. For example:
+How to use. You can use existing modules. You do not need to install it. Dron use prefix `erector-` for all modules. So you can call any existing at npm module in any time. For example:
 
 ```
-dron webpack-init
+erector webpack-init
 ```
 
 Will start detailed dialog to generate webpack project.
@@ -53,7 +53,7 @@ Will start detailed dialog to generate webpack project.
 Or
 
 ```
-dron version
+erector version
 ```
 
 To control you package version.
@@ -65,7 +65,7 @@ You can create you own package or sigle file which will use any existing package
 Next module will configurate webpack, increase version and patch README.md with new version.
 
 ```js
-import { usePackage, editFile } from 'dron';
+import { usePackage, editFile } from 'erector';
 export default function* someModule() {
   yield usePackage('webpack-init');
   let version = yield usePackage('version');

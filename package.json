@@ -1,6 +1,6 @@
 {
-  "name": "dron",
-  "version": "1.0.0a",
+  "name": "erector",
+  "version": "1.0.0",
   "description": "Utility for development processes automation",
   "main": "./Dron.js",
   "scripts": {
@@ -11,11 +11,10 @@
   "dependencies": {
     "ansi-styles": "^2.2.1",
     "cross-spawn": "^5.0.1",
-    "erector/constants": "morulus/erector/constants",
     "ejs": "^2.5.3",
     "inquirer": "^1.2.3",
     "lodash.isplainobject": "^4.0.6",
-    "loopback-run": "github:morulus/loopback-run",
+    "reciprocator": "morulus/reciprocator",
     "redux": "^3.6.0",
     "requireg": "^0.1.6"
   },
@@ -43,14 +42,14 @@
     "generator",
     "generate",
     "app",
-    "dron"
+    "erector"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/morulus/dron.git"
+    "url": "git+https://github.com/morulus/erector.git"
   },
   "bugs": {
-    "url": "https://github.com/dronjs/dron/issues"
+    "url": "https://github.com/erectorjs/erector/issues"
   },
-  "homepage": "https://github.com/dronjs/dron#readme"
+  "homepage": "https://github.com/erectorjs/erector#readme"
 }

@@ -3,7 +3,7 @@ Dron developer guide
 
 ## Creating modules
 
-The modules of Dron is a simple Npm package. If you need to create your own module, first - you should to create a function, which perform that you need. Then, put your function into the shape of Npm package and name it with prefix `dron-`;
+The modules of Dron is a simple Npm package. If you need to create your own module, first - you should to create a function, which perform that you need. Then, put your function into the shape of Npm package and name it with prefix `erector-`;
 
 The package must containing main script. The script exports the native function. That function is a entry point to the sequence and takes command-line arguments, parsed by [minimist](https://www.npmjs.com/package/minimist).
 
@@ -52,7 +52,7 @@ installer(argv) -> partOfModule1() -> partOfModule1() -> a() -> b(1) -> c(2) -> 
 The routing is based on a simple check the desired conditions and the return of the corresponding function.
 
 ```terminal
-dron myfirstmodule --myOption1
+erector myfirstmodule --myOption1
 ```
 
 ```js
