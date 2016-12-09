@@ -11,7 +11,8 @@
   "dependencies": {
     "ansi-styles": "^2.2.1",
     "cross-spawn": "^5.0.1",
-    "dron-constants": "morulus/dron-constants",
+    "erector/constants": "morulus/erector/constants",
+    "ejs": "^2.5.3",
     "inquirer": "^1.2.3",
     "lodash.isplainobject": "^4.0.6",
     "loopback-run": "github:morulus/loopback-run",
