@@ -2,7 +2,7 @@
   "name": "erector",
   "version": "0.1.2",
   "description": "Node.js utility maker",
-  "main": "./Dron.js",
+  "main": "./erector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "BSD-2-clause",
   "dependencies": {
     "ansi-styles": "^2.2.1",
+    "cli-color": "^1.1.0",
     "cross-spawn": "^5.0.1",
     "ejs": "^2.5.3",
     "inquirer": "^1.2.3",
