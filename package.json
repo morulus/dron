@@ -1,7 +1,7 @@
 {
   "name": "erector",
-  "version": "0.1.2",
-  "description": "Node.js utility maker",
+  "version": "1.0-beta1",
+  "description": "Tool for creating CLI utilities",
   "main": "./erector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +15,7 @@
     "ejs": "^2.5.3",
     "inquirer": "^1.2.3",
     "lodash.isplainobject": "^4.0.6",
-    "reciprocator": "github:morulus/reciprocator",
+    "reciprocator": "^0.1.2",
     "redux": "^3.6.0",
     "requireg": "^0.1.6"
   },
