@@ -75,8 +75,11 @@ Erector.prototype.run = function(file, props) {
   return singular(entry, props, this[__STORE__]);
 }
 
-Erector.prototype.runPackage = function runPackage(packageName, props) {
-  const file = resolvePackage(packageName);
+Erector.prototype.runPackage = function runPackage(packageName, props, options) {
+  options = Object.assign({
+    autoinstall: true
+  }, options);
+  const file = resolvePackage(packageName, !options.autoinstall);
   if (file&&!(file instanceof Error)) {
     return this.run(file, props);
   }
