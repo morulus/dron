@@ -68,7 +68,11 @@ Erector.prototype.run = function(file, props) {
   }
   // Define mwd
   this[__INITIAL_STATE__][__CONFIG__].mwd = mwd;
-  this[__STORE__] = createStore(defaultReducer, this[__INITIAL_STATE__]||{}, applyMiddleware(middleware));
+  // Get custom state
+  const state = typeof entry.initialState === 'object' ?
+    Object.assign({}, this[__INITIAL_STATE__], entry.initialState) :
+    this[__INITIAL_STATE__];
+  this[__STORE__] = createStore(defaultReducer, state, applyMiddleware(middleware));
   this[__STORE__][LAST_REDUCER] = createReducer([defaultReducer]);
   this[__STORE__].replaceReducer(this[__STORE__][LAST_REDUCER]);
   this.isRuntime = true;
