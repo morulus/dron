@@ -9,6 +9,7 @@ const ACTION_SET_STATE = require('./lib/constants.js').ACTION_SET_STATE;
 const LAST_REDUCER = require('./lib/constants.js').LAST_REDUCER;
 const __CONFIG__ = require('./lib/constants.js').__CONFIG__;
 const __STORE__ = require('./lib/constants.js').__STORE__;
+const ERR_UNDEFINED_PACKAGE = require('./lib/constants.js').ERR_UNDEFINED_PACKAGE;
 const createCmdMiddleware = require('./lib/createCmdMiddleware.js');
 const defaultReducer = require('./lib/defaultReducer.js');
 const resolvePackage = require('./lib/resolvePackage.js');
@@ -57,7 +58,8 @@ Erector.prototype.run = function(file, props) {
   }
   const mwd = path.dirname(file);
   registerBabel(mwd);
-  const entry = require(file);
+  const module = require(file);
+  entry = typeof module === 'object' ? module.default : module;
   const middleware = createCmdMiddleware(this);
   const reducer = "undefined"===typeof this[__INITIAL_STATE__][__CONFIG__].reducer ? [] :
     (this[__CONFIG__].reducer instanceof Array ? this[__CONFIG__].reducer
@@ -87,11 +89,14 @@ Erector.prototype.runPackage = function runPackage(packageName, props, options) 
   if (file&&!(file instanceof Error)) {
     return this.run(file, props);
   }
-  return Promise.reject('Corrupt package `'+packageName+'`');
+  const error = new Error("Undefined package");
+  error.type = ERR_UNDEFINED_PACKAGE;
+  return Promise.reject(error);
 }
 
 module.exports = function createErector(initialState) {
   return new Erector(initialState);
 }
+module.exports.constants = require('./lib/constants.js');
 module.exports.pwd = require('./plugins/pwd');
 module.exports.configure = require('./plugins/configure');

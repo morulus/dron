@@ -19,7 +19,8 @@
     "ncp": "^2.0.0",
     "reciprocator": "^0.2.0-beta.0",
     "redux": "^3.6.0",
-    "requireg": "^0.1.6"
+    "requireg": "^0.1.6",
+    "stringify-object-extract-functions": "^2.4.1"
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "0.2.1",
