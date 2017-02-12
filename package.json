@@ -1,6 +1,6 @@
 {
   "name": "erector",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Tool for creating CLI utilities",
   "main": "./erector.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "BSD-2-clause",
   "dependencies": {
     "ansi-styles": "^2.2.1",
+    "chokidar": "^1.6.1",
     "cli-color": "^1.1.0",
     "cross-spawn": "^5.0.1",
     "ejs": "^2.5.3",
@@ -17,10 +18,11 @@
     "lodash.isplainobject": "^4.0.6",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "reciprocator": "^0.2.0-beta.0",
+    "reciprocator": "^0.2.0-beta.4",
     "redux": "^3.6.0",
     "requireg": "^0.1.6",
-    "stringify-object-extract-functions": "^2.4.1"
+    "stringify-object-extract-functions": "^2.4.1",
+    "through2": "^2.0.3"
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "0.2.1",
