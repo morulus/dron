@@ -53,6 +53,7 @@ Erector.prototype.use = function(configurator) {
 }
 
 Erector.prototype.run = function(file, props) {
+  const start = new Date().getTime();
   if (!fs.existsSync(file)) {
     return this.sendError(new Error(file + 'is not exists'));
   }
@@ -78,6 +79,9 @@ Erector.prototype.run = function(file, props) {
   this[__STORE__][LAST_REDUCER] = createReducer([defaultReducer]);
   this[__STORE__].replaceReducer(this[__STORE__][LAST_REDUCER]);
   this.isRuntime = true;
+  if (process.env.DEBUG) {
+    console.log('Erector has started in ', (new Date().getTime() - start)+'ms');
+  }
   return singular(entry, props, this[__STORE__]);
 }
 
