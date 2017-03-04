@@ -1,4 +1,4 @@
-import { echo, map, copy, ejs, assignState, readDir, readFile, normalize } from 'erector';
+import { echo, each, map, copy, ejs, assignState, readDir, readFile, normalize } from 'erector';
 import jsdoc from 'jsdoc-api';
 import jsDocParse from 'jsdoc-parse';
 import path from 'path';
@@ -32,10 +32,20 @@ export default function* (state) {
       };
     }
   });
+  /**
+   * Create file for each Helper in docs/helpers
+   */
+  yield each(helpers.filter(helper => helper), function* (helper) {
+    yield copy(require.resolve('./templates/helper.md'), `./docs/helpers/${helper.name}.md`, {
+      transform: function* (content) {
+        yield ejs(content, helper);
+      }
+    });
+  });
   state = yield assignState({
     helpers: helpers.filter(helper => helper),
   });
-  yield copy(require.resolve('./README.md'), './README.md', {
+  yield copy(require.resolve('./templates/readme.md'), './readme.md', {
     transform: function* (content) {
       yield ejs(content, state);
     }

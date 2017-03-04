@@ -110,20 +110,5 @@ And you do not need to install `erector` separately to make import from it. It a
 Later you will learn how to write your own helpers, but the use of basic helpers simplifies life by covering common tasks.
 
 <% for (var i = 0; i < helpers.length; i++) { %>
-### <%= helpers[i].name %>
-<%- helpers[i].jsdoc.description %>
-<% if (helpers[i].jsdoc.params) { %>
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |<% for (var q = 0; q < helpers[i].jsdoc.params.length; q++) { %>
-| <%= helpers[i].jsdoc.params[q].name %> | `<%- helpers[i].jsdoc.params[q].type.names.join('|') %>` | <%= helpers[i].jsdoc.params[q].description||'' %> | <%= helpers[i].jsdoc.params[q].defaultValue %><% } %>
-<% } %>
-<% if (helpers[i].jsdoc.returns) { %>
-__Returns:__ `<%- helpers[i].jsdoc.returns[0].type.names.join('|') %>` <%= helpers[i].jsdoc.returns[0].description %>
-<% } %>
-<% if (helpers[i].jsdoc.examples) { %>
-<% for (var e = 0; e < helpers[i].jsdoc.examples.length; e++) { %>
-```js
-<%- helpers[i].jsdoc.examples[e] %>
-```<% } %>
-<% } %>
+[<%= helpers[i].name %>](docs/helpers/<%- helpers[i].name %>.md)
 <% } %>

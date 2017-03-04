@@ -107,265 +107,32 @@ And you do not need to install `erector` separately to make import from it. It a
 
 ## List of basic helpers
 
-Later you will learn how to write your own assistants, but the use of basic helpers simplifies life by covering common tasks.
+Later you will learn how to write your own helpers, but the use of basic helpers simplifies life by covering common tasks.
 
 
-### assignState
-Assign state to the store. Equals to
-setState with `Object.assign(state, {...})`
-```js
-yield assignState({
-  name,
-});
-```
-It can accept another helper as the first argument
-```js
-yield assignState(dialog([{
- name: {...}
-}]));
-```
+[assignState](docs/helpers/assignState.md)
 
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| subject | `object|helper` | Data or helper | 
+[calm](docs/helpers/calm.md)
 
+[cancel](docs/helpers/cancel.md)
 
-__Returns:__ `object` 
+[clear](docs/helpers/clear.md)
 
+[dialog](docs/helpers/dialog.md)
 
+[echo](docs/helpers/echo.md)
 
-### calm
-Intercepts errors inside `subject` and returns value of
-onError as the normal result. If onError is a function
-then it will handler of catch
+[ejs](docs/helpers/ejs.md)
 
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| subject | `function|generator` |  | 
-| onError | `any` |  | 
+[fileExists](docs/helpers/fileExists.md)
 
+[inModule](docs/helpers/inModule.md)
 
+[isDirectory](docs/helpers/isDirectory.md)
 
+[pathExists](docs/helpers/pathExists.md)
 
-```js
-const result = yield calm(
- writeFile('./someBlockedFile', ''),
- null
-);
-// result === null
-```
+[readFile](docs/helpers/readFile.md)
 
-
-### cancel
-Cancel cancelable async task or channel.
-
-```js
-import { channel, cancel, echo } from 'erector';
-
-export default function* () {
-  const counter = yield channel(function* () {
-    yield new Promise(resolve => setTimeout(
-      () => resolve('tick'),
-      1000,
-    ));
-  });
-  let times = 0;
-  while ( yield counter() ) {
-    yield echo('tick');
-    if (++times === 3 ) {
-      yield cancel(counter);
-    }
-  }
-  yield echo('done');
-}
-// tick
-// tick
-// tick
-// done
-```
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| promise | `Promise|generator` | Channel or async task | 
-| final | `any` | The value which will be returned after cancellation | 
-
-
-
-
-### clear
-Clear terminal
-
-
-
-
-```js
-yield clear();
-```
-
-
-### dialog
-Starts CLI dialog (powered by inquirer).
-If `questions` will be object, then an answer will be the only one (instead of array)
-
-See [Inquirer](https://www.npmjs.com/package/inquirer) for the ditails.
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| questions | `array.<object>|object|helper` | Question(s) | 
-
-
-__Returns:__ `type` 
-
-
-
-```js
-const price = yield dialog({
- message: 'How much is the fish?',
- type: 'string',
-});
-yield echo(`The fish is ${price} coins`);
-```
-
-
-### echo
-Print a message to the terminal (like console.log)
-Has static methods:
-- echo.success
-- echo.warn
-- echo.note
-- echo.error
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| ...messages | `*` | One or many messages | 
-
-
-
-
-```js
-yield echo('Welcome');
-yield echo.note('to');
-yield echo.warn('the');
-yield echo.success('Erector');
-```
-
-
-### ejs
-In most typicall tasks, you do not need to specify `data` argument to parse you .ejs template.
-In an overwhelming case for the compilation of the document is enough to give it a `template`.
-By the defaults the data are taken from the state.
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| template | `string|function` | String or a function (generator) which returns chain, ending with template text | 
-| data | `object` | Properties which will be used by ejs as data | 
-| options | `object` | Options for ejs (read ejs docs for ditails) | 
-
-
-
-
-```js
-let filename = yield inModule('./templates/readme.jsx');
-```
-```js
-yield writeFile('./readme.md', ejs(readFile(inModule('./templates/readme.jsx'))));
-```
-
-
-### fileExists
-If target resource is directory then result will false too.
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| filename | `string` | Relative path to the file | 
-
-
-__Returns:__ `function` 
-
-
-
-```js
-let indexExists = yield fileExists('./index.html');
-```
-
-
-### inModule
-When you need to get file in your module directory you should to use this fabric,
-because in default mode all paths are calculated relative to the project's root directory.
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| filename | `string` | Must be a relative path (with dot at the beginning) | 
-
-
-__Returns:__ `function` 
-
-
-
-```js
-// Read template from module directory
-yield readFile(inModule('./templates/example.html'));
-```
-
-
-### isDirectory
-If target resource is file then result will false too.
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| filename | `string` | Relative path to the file | 
-
-
-__Returns:__ `function` 
-
-
-
-```js
-let appExists = yield isDirectory('./app');
-```
-
-
-### pathExists
-If target resource is directory then result will false too.
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| pathname | `string` | Relative path to the file or dir | 
-
-
-__Returns:__ `function` 
-
-
-
-```js
-let indexExists = yield pathExists('./');
-```
-
-
-### readFile
-readFile - Return loopback function which read file
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| filename | `string` |  | 
-| options | `string|object` | = &#39;utf-8&#39; | 
-
-
-__Returns:__ `Promise` 
-
-
-
-### writeFile
-writeFile - Return a loopback function which writes content to file
-
-| Param  | Type                | Description  | Default   |
-| ------ | ------------------- | ------------ | --------- |
-| filename | `string` | Relative filename | 
-| content | `string` | Content | 
-| encode | `string|undefined` | = &#39;utf-8&#39; Encode | 
-
-
-__Returns:__ `Promise` 
-
-
+[writeFile](docs/helpers/writeFile.md)
 
