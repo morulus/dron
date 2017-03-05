@@ -1,5 +1,8 @@
 cancel
 ==
+```js
+import { cancel } from 'erector';
+```
 
 Cancel cancelable async task or channel.
 

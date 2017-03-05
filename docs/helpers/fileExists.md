@@ -1,14 +1,18 @@
 fileExists
 ==
+```js
+import { fileExists } from 'erector';
+```
 
-If target resource is directory then result will false too.
+Checking the existence of a file.
+If target resource is a directory the result will be false.
 
 | Param  | Type                | Description  | Default   |
 | ------ | ------------------- | ------------ | --------- |
-| filename | `string` | Relative path to the file | 
+| filename | `string` |  | 
 
 
-__Returns:__ `function` 
+__Returns:__ `boolean` 
 
 
 

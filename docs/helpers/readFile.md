@@ -1,5 +1,8 @@
 readFile
 ==
+```js
+import { readFile } from 'erector';
+```
 
 readFile - Return loopback function which read file
 

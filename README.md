@@ -93,46 +93,74 @@ erect doit
 
 And if your script is pretty nice, you able to publish it in Npm. Then other people will be able to use it.
 
-# Helpers
+## Helpers ##
 
-The helpers is a special functions which perform some frequent job. The Erector contains several dozen basic helpers. All of them are imported as follows:
+The helpers is a special functions which perform some frequent job. Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
+
+### `Basic helpers`
+
+The Erector contains several dozen basic helpers. All of them are imported as follows:
 
 ```js
 import { helperName } from 'erector';
 ```
 
-Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
-
 And you do not need to install `erector` separately to make import from it. It always with you.
 
-## List of basic helpers
 
-Later you will learn how to write your own helpers, but the use of basic helpers simplifies life by covering common tasks.
+- [assignState](docs/helpers/assignState.md)
 
+- [calm](docs/helpers/calm.md)
 
-[assignState](docs/helpers/assignState.md)
+- [cancel](docs/helpers/cancel.md)
 
-[calm](docs/helpers/calm.md)
+- [clear](docs/helpers/clear.md)
 
-[cancel](docs/helpers/cancel.md)
+- [confirm](docs/helpers/confirm.md)
 
-[clear](docs/helpers/clear.md)
+- [copy](docs/helpers/copy.md)
 
-[dialog](docs/helpers/dialog.md)
+- [createDir](docs/helpers/createDir.md)
 
-[echo](docs/helpers/echo.md)
+- [dialog](docs/helpers/dialog.md)
 
-[ejs](docs/helpers/ejs.md)
+- [digest](docs/helpers/digest.md)
 
-[fileExists](docs/helpers/fileExists.md)
+- [dispatch](docs/helpers/dispatch.md)
 
-[inModule](docs/helpers/inModule.md)
+- [each](docs/helpers/each.md)
 
-[isDirectory](docs/helpers/isDirectory.md)
+- [echo](docs/helpers/echo.md)
 
-[pathExists](docs/helpers/pathExists.md)
+- [editFile](docs/helpers/editFile.md)
 
-[readFile](docs/helpers/readFile.md)
+- [ejs](docs/helpers/ejs.md)
 
-[writeFile](docs/helpers/writeFile.md)
+- [eventToChannel](docs/helpers/eventToChannel.md)
+
+- [exec](docs/helpers/exec.md)
+
+- [exit](docs/helpers/exit.md)
+
+- [fileExists](docs/helpers/fileExists.md)
+
+- [fork](docs/helpers/fork.md)
+
+- [forkAll](docs/helpers/forkAll.md)
+
+- [getState](docs/helpers/getState.md)
+
+- [inModule](docs/helpers/inModule.md)
+
+- [isDirectory](docs/helpers/isDirectory.md)
+
+- [map](docs/helpers/map.md)
+
+- [mergeChannels](docs/helpers/mergeChannels.md)
+
+- [pathExists](docs/helpers/pathExists.md)
+
+- [readFile](docs/helpers/readFile.md)
+
+- [writeFile](docs/helpers/writeFile.md)
 

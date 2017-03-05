@@ -1,5 +1,8 @@
 writeFile
 ==
+```js
+import { writeFile } from 'erector';
+```
 
 writeFile - Return a loopback function which writes content to file
 

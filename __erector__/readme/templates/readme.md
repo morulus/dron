@@ -93,22 +93,20 @@ erect doit
 
 And if your script is pretty nice, you able to publish it in Npm. Then other people will be able to use it.
 
-# Helpers
+## Helpers ##
 
-The helpers is a special functions which perform some frequent job. The Erector contains several dozen basic helpers. All of them are imported as follows:
+The helpers is a special functions which perform some frequent job. Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
+
+### Basic helpers
+
+The Erector contains several dozen basic helpers. All of them are imported as follows:
 
 ```js
 import { helperName } from 'erector';
 ```
 
-Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
-
 And you do not need to install `erector` separately to make import from it. It always with you.
 
-## List of basic helpers
-
-Later you will learn how to write your own helpers, but the use of basic helpers simplifies life by covering common tasks.
-
 <% for (var i = 0; i < helpers.length; i++) { %>
-[<%= helpers[i].name %>](docs/helpers/<%- helpers[i].name %>.md)
+- [<%= helpers[i].name %>](docs/helpers/<%- helpers[i].name %>.md)
 <% } %>

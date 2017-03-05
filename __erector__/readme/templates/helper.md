@@ -1,5 +1,8 @@
 <%= name %>
 ==
+```js
+import { <%- name %> } from 'erector';
+```
 
 <%- jsdoc.description %>
 <% if (jsdoc.params) { %>

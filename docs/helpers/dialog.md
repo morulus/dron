@@ -1,5 +1,8 @@
 dialog
 ==
+```js
+import { dialog } from 'erector';
+```
 
 Starts CLI dialog (powered by inquirer).
 If `questions` will be object, then an answer will be the only one (instead of array)

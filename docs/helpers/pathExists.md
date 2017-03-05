@@ -1,5 +1,8 @@
 pathExists
 ==
+```js
+import { pathExists } from 'erector';
+```
 
 If target resource is directory then result will false too.
 

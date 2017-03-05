@@ -1,5 +1,8 @@
 assignState
 ==
+```js
+import { assignState } from 'erector';
+```
 
 Assign state to the store. Equals to
 setState with `Object.assign(state, {...})`

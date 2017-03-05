@@ -1,5 +1,8 @@
 clear
 ==
+```js
+import { clear } from 'erector';
+```
 
 Clear terminal
 

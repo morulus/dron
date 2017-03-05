@@ -1,5 +1,8 @@
 ejs
 ==
+```js
+import { ejs } from 'erector';
+```
 
 In most typicall tasks, you do not need to specify `data` argument to parse you .ejs template.
 In an overwhelming case for the compilation of the document is enough to give it a `template`.

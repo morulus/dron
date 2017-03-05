@@ -13,6 +13,7 @@ const ERR_UNDEFINED_PACKAGE = require('./lib/constants.js').ERR_UNDEFINED_PACKAG
 const createCmdMiddleware = require('./lib/createCmdMiddleware.js');
 const defaultReducer = require('./lib/defaultReducer.js');
 const resolvePackage = require('./lib/resolvePackage.js');
+const erectorPackage = require('./package.json');
 
 const __INITIAL_STATE__ = Symbol('initialState');
 
@@ -71,6 +72,8 @@ Erector.prototype.run = function(file, props) {
   }
   // Define mwd
   this[__INITIAL_STATE__][__CONFIG__].mwd = mwd;
+  // Define engine version
+  this[__INITIAL_STATE__][__CONFIG__].engineVersion = erectorPackage.version;
   // Get custom state
   const state = typeof entry.initialState === 'object' ?
     Object.assign({}, this[__INITIAL_STATE__], entry.initialState) :

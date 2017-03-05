@@ -1,20 +1,21 @@
 inModule
 ==
+```js
+import { inModule } from 'erector';
+```
 
-When you need to get file in your module directory you should to use this fabric,
-because in default mode all paths are calculated relative to the project's root directory.
+Resolve filename relative to module directory.
 
 | Param  | Type                | Description  | Default   |
 | ------ | ------------------- | ------------ | --------- |
-| filename | `string` | Must be a relative path (with dot at the beginning) | 
+| filename | `string` | Must be a relative path | 
 
 
-__Returns:__ `function` 
+__Returns:__ `string` 
 
 
 
 ```js
-// Read template from module directory
 yield readFile(inModule('./templates/example.html'));
 ```
 
