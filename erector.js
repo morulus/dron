@@ -9,6 +9,7 @@ const ACTION_SET_STATE = require('./lib/constants.js').ACTION_SET_STATE;
 const LAST_REDUCER = require('./lib/constants.js').LAST_REDUCER;
 const __CONFIG__ = require('./lib/constants.js').__CONFIG__;
 const __STORE__ = require('./lib/constants.js').__STORE__;
+const __MIDDLEWARES__ = require('./lib/constants.js').__MIDDLEWARES__;
 const ERR_UNDEFINED_PACKAGE = require('./lib/constants.js').ERR_UNDEFINED_PACKAGE;
 const createCmdMiddleware = require('./lib/createCmdMiddleware.js');
 const defaultReducer = require('./lib/defaultReducer.js');
@@ -18,8 +19,7 @@ const erectorPackage = require('./package.json');
 const __INITIAL_STATE__ = Symbol('initialState');
 
 const INITIAL_STATE = {
-  [__CONFIG__]: {},
-  isRuntime: false,
+  [__CONFIG__]: {}
 };
 
 function Erector(initialState) {
@@ -27,16 +27,17 @@ function Erector(initialState) {
     Object.assign({}, initialState, INITIAL_STATE) : INITIAL_STATE;
   this[__STORE__] = null;
   this.isRuntime = false;
+  this.errors = [];
 }
 
 Erector.prototype.use = function(configurator) {
   if (typeof configurator !== 'function') {
-    this.sendError(new Error('Configurator must be a function'));
+    return this.sendError(new Error('Configurator must be a function'));
   }
   if (this.isRuntime) {
     const state = configurator(this[__STORE__].getState());
     if (typeof state !== 'object') {
-      this.sendError(new Error('Configurator must provide a plain object'));
+      return this.sendError(new Error('Configurator must provide a plain object'));
     } else {
       this[__STORE__].dispatch({
         type: ACTION_SET_STATE,
@@ -46,7 +47,7 @@ Erector.prototype.use = function(configurator) {
   } else {
     const state = configurator(this[__INITIAL_STATE__]);
     if (typeof state !== 'object') {
-      this.sendError(new Error('Configurator must provide a plain object'));
+      return this.sendError(new Error('Configurator must provide a plain object'));
     } else {
       this[__INITIAL_STATE__] = state;
     }
@@ -80,6 +81,7 @@ Erector.prototype.run = function(file, props) {
     this[__INITIAL_STATE__];
   this[__STORE__] = createStore(defaultReducer, state, applyMiddleware(middleware));
   this[__STORE__][LAST_REDUCER] = createReducer([defaultReducer]);
+  this[__STORE__][__MIDDLEWARES__] = [];
   this[__STORE__].replaceReducer(this[__STORE__][LAST_REDUCER]);
   this.isRuntime = true;
   if (process.env.DEBUG) {
@@ -99,6 +101,11 @@ Erector.prototype.runPackage = function runPackage(packageName, props, options) 
   const error = new Error("Undefined package");
   error.type = ERR_UNDEFINED_PACKAGE;
   return Promise.reject(error);
+}
+
+Erector.prototype.sendError = function(e) {
+  console.log(e.message);
+  this.errors.push(e);
 }
 
 module.exports = function createErector(initialState) {

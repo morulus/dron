@@ -14,10 +14,7 @@ Has static methods:
 
 | Param  | Type                | Description  | Default   |
 | ------ | ------------------- | ------------ | --------- |
-| ...messages | `*` | One or many messages | 
-
-
-
+| ...messages | `*` | One or many messages |
 
 ```js
 yield echo.clear();
@@ -25,5 +22,5 @@ yield echo('Welcome');
 yield echo.note('to');
 yield echo.warn('the');
 yield echo.success('Erector');
+yield echo.ok('Done');
 ```
-
