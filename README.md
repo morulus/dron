@@ -97,7 +97,7 @@ And if your script is pretty nice, you able to publish it in Npm. Then other peo
 
 The helpers is a special functions which perform some frequent job. Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
 
-### `Basic helpers`
+### Basic helpers
 
 The Erector contains several dozen basic helpers. All of them are imported as follows:
 
@@ -108,11 +108,15 @@ import { helperName } from 'erector';
 And you do not need to install `erector` separately to make import from it. It always with you.
 
 
+- [applyDispatcher](docs/helpers/applyDispatcher.md)
+
 - [assignState](docs/helpers/assignState.md)
 
 - [calm](docs/helpers/calm.md)
 
 - [cancel](docs/helpers/cancel.md)
+
+- [channel](docs/helpers/channel.md)
 
 - [clear](docs/helpers/clear.md)
 
@@ -127,6 +131,8 @@ And you do not need to install `erector` separately to make import from it. It a
 - [digest](docs/helpers/digest.md)
 
 - [dispatch](docs/helpers/dispatch.md)
+
+- [dispatchToChannel](docs/helpers/dispatchToChannel.md)
 
 - [each](docs/helpers/each.md)
 
@@ -161,6 +167,8 @@ And you do not need to install `erector` separately to make import from it. It a
 - [pathExists](docs/helpers/pathExists.md)
 
 - [readFile](docs/helpers/readFile.md)
+
+- [resolve](docs/helpers/resolve.md)
 
 - [writeFile](docs/helpers/writeFile.md)
 
