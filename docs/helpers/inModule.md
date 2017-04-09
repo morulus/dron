@@ -4,7 +4,7 @@ inModule
 import { inModule } from 'erector';
 ```
 
-Resolve filename relative to module directory.
+Resolve filename relative to the module directory.
 
 | Param  | Type                | Description  | Default   |
 | ------ | ------------------- | ------------ | --------- |

@@ -16,11 +16,6 @@ This tool will help you to create CLI utilities. You got a set of tools and you 
 ```shell
 npm install erector-cli -g
 ```
-Enjoy.
-
-# Creating modules
-
-The easiest module of Erector is the plain file.
 
 To write your first module, just create in any folder the file named `hello.js`. Open your favorite code editor and put to this file next code:
 ```js
@@ -29,7 +24,7 @@ import { echo, dialog } from 'erector';
 default function* () {
   const name = yield dialog({
     message: 'Enter your name',
-    type: 'string',
+    type: 'input  ',
     required: true,
   });
   yield echo(`Hello, ${name}!`);
@@ -97,8 +92,6 @@ And if your script is pretty nice, you able to publish it in Npm. Then other peo
 
 The helpers is a special functions which perform some frequent job. Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
 
-### Basic helpers
-
 The Erector contains several dozen basic helpers. All of them are imported as follows:
 
 ```js
@@ -108,5 +101,5 @@ import { helperName } from 'erector';
 And you do not need to install `erector` separately to make import from it. It always with you.
 
 <% for (var i = 0; i < helpers.length; i++) { %>
-- [<%= helpers[i].name %>](docs/helpers/<%- helpers[i].name %>.md)
+- [`<%= helpers[i].name %>`](docs/helpers/<%- helpers[i].name %>.md)
 <% } %>

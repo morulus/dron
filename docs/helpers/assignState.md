@@ -11,7 +11,7 @@ yield assignState({
   name,
 });
 ```
-It can accept another helper as the first argument
+It can accept function or generator as a first argument
 ```js
 yield assignState(dialog([{
  name: {...}

@@ -4,7 +4,7 @@ confirm
 import { confirm } from 'erector';
 ```
 
-Ask the simple question and get the simple answer: Yes or no.
+Get a confirmation of the user.
 
 | Param  | Type                | Description  | Default   |
 | ------ | ------------------- | ------------ | --------- |
@@ -15,6 +15,8 @@ Ask the simple question and get the simple answer: Yes or no.
 
 
 ```js
-const confirmed = yield confirm('Create a file?');
+if (yield confirm('Create a file?')) {
+ // Create file
+}
 ```
 

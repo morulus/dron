@@ -16,11 +16,6 @@ This tool will help you to create CLI utilities. You got a set of tools and you 
 ```shell
 npm install erector-cli -g
 ```
-Enjoy.
-
-# Creating modules
-
-The easiest module of Erector is the plain file.
 
 To write your first module, just create in any folder the file named `hello.js`. Open your favorite code editor and put to this file next code:
 ```js
@@ -29,7 +24,7 @@ import { echo, dialog } from 'erector';
 default function* () {
   const name = yield dialog({
     message: 'Enter your name',
-    type: 'string',
+    type: 'input  ',
     required: true,
   });
   yield echo(`Hello, ${name}!`);
@@ -97,8 +92,6 @@ And if your script is pretty nice, you able to publish it in Npm. Then other peo
 
 The helpers is a special functions which perform some frequent job. Helpers will help you to write your scripts, removes the load from the hands. You should use them as often as possible.
 
-### Basic helpers
-
 The Erector contains several dozen basic helpers. All of them are imported as follows:
 
 ```js
@@ -108,67 +101,67 @@ import { helperName } from 'erector';
 And you do not need to install `erector` separately to make import from it. It always with you.
 
 
-- [applyDispatcher](docs/helpers/applyDispatcher.md)
+- [`applyDispatcher`](docs/helpers/applyDispatcher.md)
 
-- [assignState](docs/helpers/assignState.md)
+- [`assignState`](docs/helpers/assignState.md)
 
-- [calm](docs/helpers/calm.md)
+- [`calm`](docs/helpers/calm.md)
 
-- [cancel](docs/helpers/cancel.md)
+- [`cancel`](docs/helpers/cancel.md)
 
-- [channel](docs/helpers/channel.md)
+- [`channel`](docs/helpers/channel.md)
 
-- [clear](docs/helpers/clear.md)
+- [`clear`](docs/helpers/clear.md)
 
-- [confirm](docs/helpers/confirm.md)
+- [`confirm`](docs/helpers/confirm.md)
 
-- [copy](docs/helpers/copy.md)
+- [`copy`](docs/helpers/copy.md)
 
-- [createDir](docs/helpers/createDir.md)
+- [`createDir`](docs/helpers/createDir.md)
 
-- [dialog](docs/helpers/dialog.md)
+- [`dialog`](docs/helpers/dialog.md)
 
-- [digest](docs/helpers/digest.md)
+- [`digest`](docs/helpers/digest.md)
 
-- [dispatch](docs/helpers/dispatch.md)
+- [`dispatch`](docs/helpers/dispatch.md)
 
-- [dispatchToChannel](docs/helpers/dispatchToChannel.md)
+- [`dispatchToChannel`](docs/helpers/dispatchToChannel.md)
 
-- [each](docs/helpers/each.md)
+- [`each`](docs/helpers/each.md)
 
-- [echo](docs/helpers/echo.md)
+- [`echo`](docs/helpers/echo.md)
 
-- [editFile](docs/helpers/editFile.md)
+- [`editFile`](docs/helpers/editFile.md)
 
-- [ejs](docs/helpers/ejs.md)
+- [`ejs`](docs/helpers/ejs.md)
 
-- [eventToChannel](docs/helpers/eventToChannel.md)
+- [`eventToChannel`](docs/helpers/eventToChannel.md)
 
-- [exec](docs/helpers/exec.md)
+- [`exec`](docs/helpers/exec.md)
 
-- [exit](docs/helpers/exit.md)
+- [`exit`](docs/helpers/exit.md)
 
-- [fileExists](docs/helpers/fileExists.md)
+- [`fileExists`](docs/helpers/fileExists.md)
 
-- [fork](docs/helpers/fork.md)
+- [`fork`](docs/helpers/fork.md)
 
-- [forkAll](docs/helpers/forkAll.md)
+- [`forkAll`](docs/helpers/forkAll.md)
 
-- [getState](docs/helpers/getState.md)
+- [`getState`](docs/helpers/getState.md)
 
-- [inModule](docs/helpers/inModule.md)
+- [`inModule`](docs/helpers/inModule.md)
 
-- [isDirectory](docs/helpers/isDirectory.md)
+- [`isDirectory`](docs/helpers/isDirectory.md)
 
-- [map](docs/helpers/map.md)
+- [`map`](docs/helpers/map.md)
 
-- [mergeChannels](docs/helpers/mergeChannels.md)
+- [`mergeChannels`](docs/helpers/mergeChannels.md)
 
-- [pathExists](docs/helpers/pathExists.md)
+- [`pathExists`](docs/helpers/pathExists.md)
 
-- [readFile](docs/helpers/readFile.md)
+- [`readFile`](docs/helpers/readFile.md)
 
-- [resolve](docs/helpers/resolve.md)
+- [`resolve`](docs/helpers/resolve.md)
 
-- [writeFile](docs/helpers/writeFile.md)
+- [`writeFile`](docs/helpers/writeFile.md)
 
