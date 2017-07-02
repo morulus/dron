@@ -87,7 +87,13 @@ Erector.prototype.run = function(file, props) {
   if (process.env.DEBUG) {
     console.log('Erector has started in ', (new Date().getTime() - start)+'ms');
   }
-  return singular(entry, props, this[__STORE__]);
+  return singular(entry, props, this[__STORE__])
+  .then(function(result) {
+    if (this.errors.length > 0) {
+      return Promise.reject(this.errors[0]);
+    }
+    return result;
+  }.bind(this));
 }
 
 Erector.prototype.runPackage = function runPackage(packageName, props, options) {
@@ -104,7 +110,6 @@ Erector.prototype.runPackage = function runPackage(packageName, props, options) 
 }
 
 Erector.prototype.sendError = function(e) {
-  console.log(e.message);
   this.errors.push(e);
 }
 
