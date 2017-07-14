@@ -10,3 +10,8 @@
 - Fixed echo.clear;
 - Implemented path resolver for __erector__, __store__ imports;
 - The babel presets have divided into the plugins;
+
+1.0-beta.8
+----
+
+- Refactoring with the aim of performance optimization and flexibility of structure;

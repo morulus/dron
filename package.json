@@ -1,10 +1,11 @@
 {
   "name": "erector",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.8",
   "description": "Tool for creating CLI utilities",
-  "main": "./erector.js",
+  "main": "./dist/erector.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-node": "gulp --gulpfile ./tools/build/nodeenv.js"
   },
   "author": "Vladimir Kalmykov <luciusmorulus@gmail.com>",
   "license": "BSD-2-clause",
@@ -61,7 +62,10 @@
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
-    "github-markdown-render": "^2.1.0"
+    "github-markdown-render": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-watch": "^4.3.11"
   },
   "keywords": [
     "cli-app",
