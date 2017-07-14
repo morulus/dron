@@ -113,9 +113,19 @@ Erector.prototype.sendError = function(e) {
   this.errors.push(e);
 }
 
+Erector.prototype.fatalError = function(e) {
+  /* We need next tick, because it is reference error, and
+   * we must to throw error outside of Promise scope */
+  (process.nextTick||setTimeout)(function() {
+    /* This is fatal error. Program died */
+    throw e;
+  });
+}
+
 module.exports = function createErector(initialState) {
   return new Erector(initialState);
 }
 module.exports.constants = require('./lib/constants.js');
 module.exports.pwd = require('./plugins/pwd');
 module.exports.configure = require('./plugins/configure');
+module.exports.resolvePackage = resolvePackage;

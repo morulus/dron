@@ -6,6 +6,7 @@ module.exports = {
   },
   create: function(context) {
     let describeCount = 0;
+    let importFirst = 0;
     return {
       "CallExpression": function (node) {
         if (node.callee.name === 'describe') {
@@ -24,6 +25,9 @@ module.exports = {
             });
           }
         }
+      },
+      "Program": function(node) {
+        console.log(node);
       },
       "Program:exit": function (node) {
         if (describeCount === 0){
