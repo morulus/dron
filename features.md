@@ -15,3 +15,4 @@
 ----
 
 - Refactoring with the aim of performance optimization and flexibility of structure;
+- Removed useless dependencies.
