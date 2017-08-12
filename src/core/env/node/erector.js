@@ -3,7 +3,6 @@ const path = require('path');
 const createStore = require('redux').createStore;
 const singular = require('reciprocator').singular;
 const applyMiddleware = require('redux').applyMiddleware;
-const resolvePackage = require('erector-node-utils/resolvePackage');
 const registerBabel = require('./registerBabel.js');
 const resolveSystemScripts = require('./resolveSystemScripts.js');
 const autoinstallPackage = require('./resolveLocalScripts.js');
@@ -138,10 +137,9 @@ export default function createErector(initialState) {
 
 createErector.constants = constants;
 createErector.selectors = selectors;
-createErector.resolvePackage = resolvePackage;
 createErector.pwd = pwd;
 createErector.configure = configure;
 createErector.middleware = middleware;
 createErector.sideeffect = sideeffect;
 
-export { constants, resolvePackage };
+export { constants };

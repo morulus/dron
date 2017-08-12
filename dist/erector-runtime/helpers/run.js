@@ -11,10 +11,6 @@ var _erector = require('./../../core/env/node/erector');
 
 var _erector2 = _interopRequireDefault(_erector);
 
-var _resolvePackage = require('erector-node-utils/resolvePackage');
-
-var _resolvePackage2 = _interopRequireDefault(_resolvePackage);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function run(file) {
@@ -22,13 +18,14 @@ function run(file) {
   var defaultState = arguments[2];
 
   return function* runner(state, store) {
-    if (!module) {
-      yield exit('Package has errors');
-    } else {
-      var app = (0, _erector2.default)(defaultState || {});
-      app.use((0, _erector.configure)(state[_constants.__CONFIG__]));
-      yield app.run(file, args);
-    }
+    throw new Error('Helper run is temporary deprecated');
+    // if (!module) {
+    //   yield exit('Package has errors');
+    // } else {
+    //   const app = createErector(defaultState || {});
+    //   app.use(configure(state[__CONFIG__]));
+    //   yield app.run(file, args);
+    // }
   };
 }
 module.exports = exports['default'];

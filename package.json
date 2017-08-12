@@ -1,6 +1,6 @@
 {
   "name": "erector",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.13",
   "description": "Tool for creating CLI utilities",
   "main": "./dist/app.js",
   "scripts": {
@@ -44,8 +44,7 @@
     "chokidar": "1.6.1",
     "cross-spawn": "5.0.1",
     "ejs": "2.5.3",
-    "erector-node-utils": "file:///Users/morulus/Work/morulus/projects/erector-node-utils",
-    "eslint": "4.0.0-rc.0",
+    "eslint": "^4.4.1",
     "express": "4.15.2",
     "inquirer": "1.2.3",
     "lodash.isplainobject": "4.0.6",
