@@ -3,15 +3,15 @@ const path = require('path');
 const createStore = require('redux').createStore;
 const singular = require('reciprocator').singular;
 const applyMiddleware = require('redux').applyMiddleware;
+const resolvePackage = require('erector-node-utils/resolvePackage');
 const registerBabel = require('./registerBabel.js');
-const resolvePackage = require('./resolvePackage.js');
-
+const resolveSystemScripts = require('./resolveSystemScripts.js');
+const autoinstallPackage = require('./resolveLocalScripts.js');
 const createReducer = require('../../createReducer.js');
 const createCmdMiddleware = require('../../createCmdMiddleware.js');
 const defaultReducer = require('../../defaultReducer.js');
 const pwd = require('../../../plugins/pwd');
 const configure = require('../../../plugins/configure');
-
 const constants = require('../../../constants.js');
 const selectors = require('../../../selectors.js');
 
@@ -28,7 +28,11 @@ const erectorPackage = require('./../../../../package.json');
 
 const __INITIAL_STATE__ = Symbol('initialState');
 const INITIAL_STATE = {
-  [__CONFIG__]: {}
+  [__CONFIG__]: {
+    babel: {
+      enabled: true,
+    }
+  }
 };
 
 function Erector(initialState) {
@@ -69,7 +73,9 @@ Erector.prototype.run = function(file, props) {
     return this.sendError(new Error(file + 'is not exists'));
   }
   const mwd = path.dirname(file);
-  registerBabel(mwd);
+  if (this[__INITIAL_STATE__][__CONFIG__].babel.enabled) {
+    registerBabel(mwd, this[__INITIAL_STATE__][__CONFIG__].babel);
+  }
   const module = require(file);
   const entry = typeof module === 'object' ? module.default : module;
   const middleware = createCmdMiddleware(this);
@@ -106,16 +112,7 @@ Erector.prototype.run = function(file, props) {
 }
 
 Erector.prototype.runPackage = function runPackage(packageName, props, options) {
-  options = Object.assign({
-    autoinstall: true
-  }, options);
-  const file = resolvePackage(packageName, !options.autoinstall);
-  if (file&&!(file instanceof Error)) {
-    return this.run(file, props);
-  }
-  const error = new Error("Undefined package");
-  error.type = ERR_UNDEFINED_PACKAGE;
-  return Promise.reject(error);
+  throw new Error("Erector::runPackage is deprecated");
 }
 
 Erector.prototype.sendError = function(e) {

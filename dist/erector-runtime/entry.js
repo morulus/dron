@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.recycle = exports.cliapp = exports.eslint = exports.callback = exports.touch = exports.resolve = exports.readDir = exports.clear = exports.removeDir = exports.removeFile = exports.forkAll = exports.dispatchToChannel = exports.isChannel = exports.eventToChannel = exports.channel = exports.createChannel = exports.mergeChannels = exports.cancel = exports.fork = exports.watch = exports.stringify = exports.pause = exports.getState = exports.isDirectory = exports.copy = exports.calm = exports.each = exports.ejs = exports.inModule = exports.digest = exports.writeJson = exports.writeFileSafe = exports.writeFile = exports.normalize = exports.exec = exports.spawn = exports.run = exports.editFile = exports.readJson = exports.readFile = exports.find = exports.map = exports.createDir = exports.fileExists = exports.pathExists = exports.exit = exports.echo = exports.dispatch = exports.dialog = exports.confirm = exports.applyDispatcher = exports.assignMiddleware = exports.assignState = exports.assignReducer = undefined;
+exports.recycle = exports.cliapp = exports.lint = exports.callback = exports.touch = exports.resolve = exports.readDir = exports.clear = exports.removeDir = exports.removeFile = exports.forkAll = exports.dispatchToChannel = exports.isChannel = exports.eventToChannel = exports.channel = exports.createChannel = exports.mergeChannels = exports.cancel = exports.fork = exports.watch = exports.stringify = exports.pause = exports.getState = exports.isDirectory = exports.copy = exports.calm = exports.each = exports.ejs = exports.inModule = exports.digest = exports.writeJson = exports.writeFileSafe = exports.writeFile = exports.normalize = exports.exec = exports.spawn = exports.run = exports.editFile = exports.readJson = exports.readFile = exports.find = exports.map = exports.createDir = exports.fileExists = exports.pathExists = exports.exit = exports.echo = exports.dispatch = exports.dialog = exports.confirm = exports.applyDispatcher = exports.assignMiddleware = exports.assignState = exports.assignReducer = undefined;
 
 var _assignReducer2 = require('./helpers/assignReducer');
 
@@ -209,9 +209,9 @@ var _callback2 = require('./helpers/callback');
 
 var _callback3 = _interopRequireDefault(_callback2);
 
-var _eslint2 = require('./helpers/eslint');
+var _lint2 = require('./helpers/lint');
 
-var _eslint3 = _interopRequireDefault(_eslint2);
+var _lint3 = _interopRequireDefault(_lint2);
 
 var _cliapp2 = require('./helpers/cliapp');
 
@@ -274,6 +274,6 @@ exports.readDir = _readDir3.default;
 exports.resolve = _resolve3.default;
 exports.touch = _touch3.default;
 exports.callback = _callback3.default;
-exports.eslint = _eslint3.default;
+exports.lint = _lint3.default;
 exports.cliapp = _cliapp3.default;
 exports.recycle = _recycle3.default;

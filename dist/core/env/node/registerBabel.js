@@ -12,6 +12,8 @@ var SELECTORS_PATH = path.resolve(__dirname, '../../../selectors.js');
 var ERECTOR_PATH = path.resolve(__dirname, '../../../erector-runtime/entry.js');
 
 module.exports = function registerBabel(mwd) {
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
   var aliases = {
     "erector/constants": CONSTANTS_PATH,
     "erector/selectors": SELECTORS_PATH,
@@ -37,10 +39,11 @@ module.exports = function registerBabel(mwd) {
     aliases: aliases,
     resolvePath: resolveLocalScripts(ERECTOR_LOCAL_DIRS),
     ignore: function ignore(path) {
-      if (/node_modules/.test(path)) {
+      if (/node_modules/.test(path) || /dist\/erector\-runtime/.test(path)) {
         return true;
       }
       return false;
-    }
+    },
+    extensions: config.extensions || ['.es', '.js', '.jsx']
   }));
 };

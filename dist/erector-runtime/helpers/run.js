@@ -11,7 +11,7 @@ var _erector = require('./../../core/env/node/erector');
 
 var _erector2 = _interopRequireDefault(_erector);
 
-var _resolvePackage = require('./../../core/env/node/resolvePackage');
+var _resolvePackage = require('erector-node-utils/resolvePackage');
 
 var _resolvePackage2 = _interopRequireDefault(_resolvePackage);
 

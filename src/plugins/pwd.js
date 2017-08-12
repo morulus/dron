@@ -10,6 +10,7 @@ module.exports = function pwd(pwd) {
   return function(state) {
     return Object.assign({}, state, {
       [__CONFIG__]: {
+        ...state[__CONFIG__],
         pwd: pwd,
       }
     });

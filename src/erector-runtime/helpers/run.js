@@ -1,6 +1,6 @@
 import { __CONFIG__ } from '../../constants';
 import createErector, { configure } from './../../core/env/node/erector';
-import resolvePackage from './../../core/env/node/resolvePackage';
+import resolvePackage from 'erector-node-utils/resolvePackage';
 
 export default function run(file, args = {}, defaultState) {
   return function* runner(state, store) {

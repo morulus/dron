@@ -14,8 +14,8 @@ module.exports = function pwd(pwd) {
   }
 
   return function (state) {
-    return _extends({}, state, _defineProperty({}, __CONFIG__, {
+    return _extends({}, state, _defineProperty({}, __CONFIG__, _extends({}, state[__CONFIG__], {
       pwd: pwd
-    }));
+    })));
   };
 };

@@ -49,6 +49,6 @@ export readDir from './helpers/readDir';
 export resolve from './helpers/resolve';
 export touch from './helpers/touch';
 export callback from './helpers/callback';
-export eslint from './helpers/eslint';
+export lint from './helpers/lint';
 export cliapp from './helpers/cliapp';
 export recycle from './helpers/recycle';

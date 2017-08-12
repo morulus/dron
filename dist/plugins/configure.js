@@ -7,6 +7,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var __CONFIG__ = require('../constants.js').__CONFIG__;
 module.exports = function configure(config) {
   return function (state) {
-    return _extends({}, state, _defineProperty({}, __CONFIG__, config));
+    return _extends({}, state, _defineProperty({}, __CONFIG__, typeof config === 'function' ? config(state[__CONFIG__]) : config));
   };
 };
