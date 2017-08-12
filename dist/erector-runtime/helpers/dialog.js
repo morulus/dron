@@ -16,9 +16,9 @@ var _digest = require('./digest');
 
 var _digest2 = _interopRequireDefault(_digest);
 
-var _inquirer = require('inquirer');
+var _dispatch = require('./dispatch');
 
-var _inquirer2 = _interopRequireDefault(_inquirer);
+var _dispatch2 = _interopRequireDefault(_dispatch);
 
 var _constants = require('../../constants');
 
@@ -82,8 +82,10 @@ function dialog(questions) {
         return value;
       });
     }
-    yield _inquirer2.default.prompt(questions).then(function (answers) {
-      return single ? answers.question : answers;
+    return (0, _dispatch2.default)({
+      type: _constants.DIALOG,
+      questions: questions,
+      single: single
     });
   };
 }

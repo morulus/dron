@@ -1,6 +1,10 @@
 // import setupThrobber from 'cli-color/throbber';
 import echo from './echo';
 import fork from './fork';
+import {
+  THROBBER_START,
+  THROBBER_STOP
+} from '../../constants';
 import { RESTANTE } from 'reciprocator';
 //
 // const throbber = setupThrobber(function (str) {

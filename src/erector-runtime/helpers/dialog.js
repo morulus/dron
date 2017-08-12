@@ -1,7 +1,7 @@
 import map from './map';
 import digest from './digest';
-import inquirer from 'inquirer';
-import { __CONFIG__ } from '../../constants';
+import dispatch from './dispatch';
+import { __CONFIG__, DIALOG } from '../../constants';
 
 function validateQuestion(q) {
   return q.hasOwnProperty("message")&&q.hasOwnProperty("type");
@@ -59,8 +59,10 @@ export default function dialog(questions) {
         return value;
       });
     }
-		yield inquirer.prompt(questions).then(function (answers) {
-			return single ? answers.question : answers;
-		});
+		return dispatch({
+      type: DIALOG,
+      questions,
+      single,
+    });
 	}
 }

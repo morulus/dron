@@ -16,13 +16,19 @@ function runSequence(store, middlewares, action) {
   const dispatch = store.dispatch;
   const iterable = middlewares[Symbol.iterator]();
   const result = new Promise(function(resolve, reject) {
-    const next = function() {
+    let lastResult;
+    const next = function(localAction) {
       const nextMiddleware = iterable.next();
+      let nextCalled = false;
+      const localNext = function(action) {
+        nextCalled = true;
+        next(action);
+      }
       if (!nextMiddleware.done) {
         dispatch({
           type: ACTION_RUN,
-          subject: nextMiddleware.value(store)(next),
-          props: action,
+          subject: nextMiddleware.value(store)(localNext),
+          props: localAction,
           next: function(result) {
             result.catch(function(e) {
               if (typeof action[NEXT] === 'function') {
@@ -33,14 +39,21 @@ function runSequence(store, middlewares, action) {
                   payload: e
                 });
               }
+            })
+            .then(function(finalResult) {
+              if (!nextCalled) {
+                resolve(finalResult);
+              } else {
+                lastResult = finalResult;
+              }
             });
           }
         });
       } else {
-        resolve();
+        resolve(lastResult);
       }
     }
-    next();
+    next(action);
   });
   if (typeof action[NEXT] === 'function') {
     action[NEXT](result);

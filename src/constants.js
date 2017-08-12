@@ -18,3 +18,6 @@ exports.CANCELLED = require('reciprocator').CANCELLED;
 exports.CHANNEL = Symbol('CHANNEL');
 exports.NEXT = Symbol('NEXT');
 exports.ERECTOR_LOCAL_DIRS = ['__store__', '__erector__'];
+exports.THROBBER_START = Symbol('THROBBER_START');
+exports.THROBBER_STOP = Symbol('THROBBER_STOP');
+exports.DIALOG = Symbol('DIALOG');
