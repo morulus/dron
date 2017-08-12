@@ -1,6 +1,6 @@
 {
   "name": "erector",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "Tool for creating CLI utilities",
   "main": "./dist/app.js",
   "scripts": {
@@ -42,7 +42,6 @@
     "babel-register": "6.18.0",
     "babel-runtime": "6.23.0",
     "chokidar": "1.6.1",
-    "cli-color": "1.1.0",
     "cross-spawn": "5.0.1",
     "ejs": "2.5.3",
     "erector-node-utils": "file:///Users/morulus/Work/morulus/projects/erector-node-utils",

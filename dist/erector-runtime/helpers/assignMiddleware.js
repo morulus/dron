@@ -25,13 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 function assignMiddleware(middleware) {
   return function (state, store) {
-    var middlewareAPI = {
-      getState: store.getState,
-      dispatch: function dispatch(action) {
-        return store.dispatch(action);
-      }
-    };
-    var middlewareDispatch = middleware(store);
+    var middlewareDispatch = middleware;
     store[_constants.__MIDDLEWARES__].push(middlewareDispatch);
     var unassign = function unassign() {
       store[_constants.__MIDDLEWARES__] = store[_constants.__MIDDLEWARES__].filter(function (mw) {

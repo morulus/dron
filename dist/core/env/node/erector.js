@@ -24,6 +24,8 @@ var createCmdMiddleware = require('../../createCmdMiddleware.js');
 var defaultReducer = require('../../defaultReducer.js');
 var pwd = require('../../../plugins/pwd');
 var configure = require('../../../plugins/configure');
+var middleware = require('../../../plugins/middleware');
+var sideeffect = require('../../../plugins/sideeffect');
 var constants = require('../../../constants.js');
 var selectors = require('../../../selectors.js');
 
@@ -41,7 +43,8 @@ var __INITIAL_STATE__ = Symbol('initialState');
 var INITIAL_STATE = _defineProperty({}, __CONFIG__, {
   babel: {
     enabled: true
-  }
+  },
+  initialMiddlewares: []
 });
 
 function Erector(initialState) {
@@ -86,7 +89,7 @@ Erector.prototype.run = function (file, props) {
   }
   var module = require(file);
   var entry = typeof module === 'object' ? module.default : module;
-  var middleware = createCmdMiddleware(this);
+  var systemMiddleware = createCmdMiddleware(this);
   var reducer = "undefined" === typeof this[__INITIAL_STATE__][__CONFIG__].reducer ? [] : this[__CONFIG__].reducer instanceof Array ? this[__CONFIG__].reducer : [this[__CONFIG__].reducer];
   // Check for pwd defined
   if (typeof this[__INITIAL_STATE__][__CONFIG__].pwd !== 'string') {
@@ -98,9 +101,10 @@ Erector.prototype.run = function (file, props) {
   this[__INITIAL_STATE__][__CONFIG__].engineVersion = erectorPackage.version;
   // Get custom state
   var state = typeof entry.initialState === 'object' ? _extends({}, this[__INITIAL_STATE__], entry.initialState) : this[__INITIAL_STATE__];
-  this[__STORE__] = createStore(defaultReducer, state, applyMiddleware(middleware));
+  this[__STORE__] = createStore(defaultReducer, state, applyMiddleware(systemMiddleware));
   this[__STORE__][LAST_REDUCER] = createReducer([defaultReducer]);
-  this[__STORE__][__MIDDLEWARES__] = [];
+  // Define initial middlewares (excepts system one)
+  this[__STORE__][__MIDDLEWARES__] = this[__INITIAL_STATE__][__CONFIG__].initialMiddlewares;
   this[__STORE__].replaceReducer(this[__STORE__][LAST_REDUCER]);
   this.isRuntime = true;
   if (process.env.DEBUG) {
@@ -140,6 +144,8 @@ createErector.selectors = selectors;
 createErector.resolvePackage = resolvePackage;
 createErector.pwd = pwd;
 createErector.configure = configure;
+createErector.middleware = middleware;
+createErector.sideeffect = sideeffect;
 
 exports.constants = constants;
 exports.resolvePackage = resolvePackage;

@@ -156,5 +156,13 @@ echo.clear = function () {
   process.stdout.write('\x1B[2J\x1B[0f');
 };
 
+echo.type = function (type) {
+  for (var _len10 = arguments.length, messages = Array(_len10 > 1 ? _len10 - 1 : 0), _key10 = 1; _key10 < _len10; _key10++) {
+    messages[_key10 - 1] = arguments[_key10];
+  }
+
+  return typeEcho(messages, type);
+};
+
 exports.default = echo;
 module.exports = exports['default'];

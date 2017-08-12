@@ -12,6 +12,8 @@ const createCmdMiddleware = require('../../createCmdMiddleware.js');
 const defaultReducer = require('../../defaultReducer.js');
 const pwd = require('../../../plugins/pwd');
 const configure = require('../../../plugins/configure');
+const middleware = require('../../../plugins/middleware');
+const sideeffect = require('../../../plugins/sideeffect');
 const constants = require('../../../constants.js');
 const selectors = require('../../../selectors.js');
 
@@ -31,7 +33,8 @@ const INITIAL_STATE = {
   [__CONFIG__]: {
     babel: {
       enabled: true,
-    }
+    },
+    initialMiddlewares: [],
   }
 };
 
@@ -78,7 +81,7 @@ Erector.prototype.run = function(file, props) {
   }
   const module = require(file);
   const entry = typeof module === 'object' ? module.default : module;
-  const middleware = createCmdMiddleware(this);
+  const systemMiddleware = createCmdMiddleware(this);
   const reducer = "undefined"===typeof this[__INITIAL_STATE__][__CONFIG__].reducer ? [] :
     (this[__CONFIG__].reducer instanceof Array ? this[__CONFIG__].reducer
       : [this[__CONFIG__].reducer]);
@@ -94,9 +97,10 @@ Erector.prototype.run = function(file, props) {
   const state = typeof entry.initialState === 'object' ?
     Object.assign({}, this[__INITIAL_STATE__], entry.initialState) :
     this[__INITIAL_STATE__];
-  this[__STORE__] = createStore(defaultReducer, state, applyMiddleware(middleware));
+  this[__STORE__] = createStore(defaultReducer, state, applyMiddleware(systemMiddleware));
   this[__STORE__][LAST_REDUCER] = createReducer([defaultReducer]);
-  this[__STORE__][__MIDDLEWARES__] = [];
+  // Define initial middlewares (excepts system one)
+  this[__STORE__][__MIDDLEWARES__] = this[__INITIAL_STATE__][__CONFIG__].initialMiddlewares;
   this[__STORE__].replaceReducer(this[__STORE__][LAST_REDUCER]);
   this.isRuntime = true;
   if (process.env.DEBUG) {
@@ -137,5 +141,7 @@ createErector.selectors = selectors;
 createErector.resolvePackage = resolvePackage;
 createErector.pwd = pwd;
 createErector.configure = configure;
+createErector.middleware = middleware;
+createErector.sideeffect = sideeffect;
 
 export { constants, resolvePackage };

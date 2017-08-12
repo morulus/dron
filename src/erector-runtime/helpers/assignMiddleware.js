@@ -9,13 +9,7 @@ import { RESTANTE } from 'reciprocator';
 
 export default function assignMiddleware(middleware) {
   return function (state, store) {
-    const middlewareAPI = {
-      getState: store.getState,
-      dispatch: function dispatch(action) {
-        return store.dispatch(action);
-      }
-    };
-    const middlewareDispatch = middleware(store);
+    const middlewareDispatch = middleware;
     store[__MIDDLEWARES__].push(middlewareDispatch);
     const unassign = function() {
       store[__MIDDLEWARES__] = store[__MIDDLEWARES__].filter((mw) => middlewareDispatch === mw);
