@@ -3,11 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 exports.default = mergeChannels;
 
 var _constants = require('../../constants');
 
 var _reciprocator = require('reciprocator');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function accost(dispatch, subject) {
   var next = function callback(promise) {
@@ -49,60 +60,92 @@ function mergeChannels() {
     channels[_key] = arguments[_key];
   }
 
-  return function* (state, store) {
-    var sequence = [];
-    var enabled = true;
-    var anticipant = void 0;
+  return _regenerator2.default.mark(function _callee(state, store) {
+    var sequence, enabled, anticipant, i, energizer, batcher;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            sequence = [];
+            enabled = true;
+            anticipant = void 0;
+            i = 0;
 
-    for (var i = 0; i < channels.length; i++) {
-      if (typeof channel !== 'function') {
-        channels[i] = yield channels[i];
-      }
-    }
+          case 4:
+            if (!(i < channels.length)) {
+              _context.next = 12;
+              break;
+            }
 
-    channels = channels.filter(isFunction);
+            if (!(typeof channel !== 'function')) {
+              _context.next = 9;
+              break;
+            }
 
-    var energizer = function energizer(subject) {
-      if (!enabled) {
-        return;
-      }
-      accost(store.dispatch, subject).then(function (next) {
-        if (anticipant && enabled) {
-          anticipant(next);
-          anticipant = null;
-        } else {
-          sequence.push(next);
+            _context.next = 8;
+            return channels[i];
+
+          case 8:
+            channels[i] = _context.sent;
+
+          case 9:
+            i++;
+            _context.next = 4;
+            break;
+
+          case 12:
+
+            channels = channels.filter(isFunction);
+
+            energizer = function energizer(subject) {
+              if (!enabled) {
+                return;
+              }
+              accost(store.dispatch, subject).then(function (next) {
+                if (anticipant && enabled) {
+                  anticipant(next);
+                  anticipant = null;
+                } else {
+                  sequence.push(next);
+                }
+
+                if (sequence.length > 200) {
+                  throw new Error("Dangerously count of observable result");
+                }
+
+                energizer(subject);
+              });
+            };
+
+            channels.forEach(function (subject) {
+              return energizer(subject);
+            });
+
+            batcher = function plural() {
+              if (sequence.length) {
+                return sequence.shift();
+              } else {
+                return new _promise2.default(function (resolve, reject) {
+                  anticipant = resolve;
+                });
+              }
+            };
+
+            batcher[_reciprocator.CANCEL] = function () {
+              enabled = false;
+            };
+
+            batcher[_reciprocator.RESTANTE] = true;
+
+            _context.next = 20;
+            return batcher;
+
+          case 20:
+          case 'end':
+            return _context.stop();
         }
-
-        if (sequence.length > 200) {
-          throw new Error("Dangerously count of observable result");
-        }
-
-        energizer(subject);
-      });
-    };
-
-    channels.forEach(function (subject) {
-      return energizer(subject);
-    });
-
-    var batcher = function plural() {
-      if (sequence.length) {
-        return sequence.shift();
-      } else {
-        return new Promise(function (resolve, reject) {
-          anticipant = resolve;
-        });
       }
-    };
-
-    batcher[_reciprocator.CANCEL] = function () {
-      enabled = false;
-    };
-
-    batcher[_reciprocator.RESTANTE] = true;
-
-    yield batcher;
-  };
+    }, _callee, this);
+  });
 }
 module.exports = exports['default'];

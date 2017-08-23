@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 var _dispatch = require('./dispatch');
 
 var _dispatch2 = _interopRequireDefault(_dispatch);
@@ -24,26 +28,63 @@ var ECHO_TYPE_WARN = 4;
 var ECHO_TYPE_NOTE = 5;
 var ECHO_TYPE_HEADER = 6;
 var ECHO_TYPE_OK = 7;
+var ECHO_TYPE_INLINE = 8;
+var ECHO_TYPE_CLEAR = 9;
 
 function noop() {
   return true;
 }
 
 function typeEcho(messages, type) {
-  return function* () {
-    for (var i = 0; i < messages.length; ++i) {
-      if (typeof messages[i] !== 'string') {
-        messages[i] = yield (0, _digest2.default)(messages[i]);
-      }
-    }
+  return _regenerator2.default.mark(function _callee() {
+    var i;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            i = 0;
 
-    yield (0, _dispatch2.default)({
-      type: _constants.ECHO,
-      message: messages,
-      messageType: type
-    });
-    yield true;
-  };
+          case 1:
+            if (!(i < messages.length)) {
+              _context.next = 9;
+              break;
+            }
+
+            if (!(typeof messages[i] !== 'string')) {
+              _context.next = 6;
+              break;
+            }
+
+            _context.next = 5;
+            return (0, _digest2.default)(messages[i]);
+
+          case 5:
+            messages[i] = _context.sent;
+
+          case 6:
+            ++i;
+            _context.next = 1;
+            break;
+
+          case 9:
+            _context.next = 11;
+            return (0, _dispatch2.default)({
+              type: _constants.ECHO,
+              message: messages,
+              messageType: type
+            });
+
+          case 11:
+            _context.next = 13;
+            return true;
+
+          case 13:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  });
 }
 
 /**
@@ -153,7 +194,7 @@ echo.header = function echoHappy() {
 };
 
 echo.clear = function () {
-  process.stdout.write('\x1B[2J\x1B[0f');
+  return typeEcho([], ECHO_TYPE_CLEAR);
 };
 
 echo.type = function (type) {
@@ -162,6 +203,14 @@ echo.type = function (type) {
   }
 
   return typeEcho(messages, type);
+};
+
+echo.inline = function () {
+  for (var _len11 = arguments.length, messages = Array(_len11), _key11 = 0; _key11 < _len11; _key11++) {
+    messages[_key11] = arguments[_key11];
+  }
+
+  return typeEcho(messages, ECHO_TYPE_INLINE);
 };
 
 exports.default = echo;

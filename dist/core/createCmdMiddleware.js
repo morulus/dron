@@ -1,5 +1,15 @@
 'use strict';
 
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _getIterator2 = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/get-iterator');
+
+var _getIterator3 = _interopRequireDefault(_getIterator2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var singular = require('reciprocator').singular;
 var constants = require('../constants.js');
 var __STORE__ = constants.__STORE__,
@@ -14,8 +24,8 @@ var __STORE__ = constants.__STORE__,
 
 function runSequence(store, middlewares, action) {
   var dispatch = store.dispatch;
-  var iterable = middlewares[Symbol.iterator]();
-  var result = new Promise(function (resolve, reject) {
+  var iterable = (0, _getIterator3.default)(middlewares);
+  var result = new _promise2.default(function (resolve, reject) {
     var lastResult = void 0;
     var next = function next(localAction) {
       var nextMiddleware = iterable.next();

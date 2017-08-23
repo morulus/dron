@@ -3,9 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 exports.default = emitterToChannel;
 
 var _reciprocator = require('reciprocator');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function defaultMapArgsToVar(value) {
   return value;
@@ -46,7 +53,7 @@ function emitterToChannel(emitter, event) {
     if (queue.length) {
       return queue.shift();
     } else {
-      return new Promise(function (resolve) {
+      return new _promise2.default(function (resolve) {
         anticipant = resolve;
       });
     }

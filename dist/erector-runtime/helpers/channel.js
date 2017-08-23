@@ -4,13 +4,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.DONE = undefined;
+
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _symbol = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/symbol');
+
+var _symbol2 = _interopRequireDefault(_symbol);
+
 exports.default = channel;
 
 var _constants = require('../../constants');
 
 var _reciprocator = require('reciprocator');
 
-var DONE = exports.DONE = Symbol('DONE');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DONE = exports.DONE = (0, _symbol2.default)('DONE');
 
 function accost(dispatch, subject, last) {
   var next = function callback(promise) {
@@ -92,7 +103,7 @@ function channel(subject) {
     var batcher = function plural() {
       if (done) {
         // Return unresolvable promise
-        return new Promise();
+        return new _promise2.default();
       }
       if (!enabled) {
         done = true;
@@ -101,7 +112,7 @@ function channel(subject) {
       if (sequence.length) {
         return sequence.shift();
       } else {
-        return new Promise(function (resolve, reject) {
+        return new _promise2.default(function (resolve, reject) {
           anticipant = resolve;
         });
       }

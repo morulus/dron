@@ -9,6 +9,7 @@ gulp.task('default', () => {
     return watch('../../src/**/*.js', { ignoreInitial: false })
     .pipe(babel(getBabelConfiguration({
       root: path.resolve(__dirname, '../..'),
+      runtime: true,
     })))
     .pipe(gulp.dest('../../dist'));
 });

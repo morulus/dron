@@ -12,6 +12,8 @@ const ECHO_TYPE_WARN = 4;
 const ECHO_TYPE_NOTE = 5;
 const ECHO_TYPE_HEADER = 6;
 const ECHO_TYPE_OK = 7;
+const ECHO_TYPE_INLINE = 8;
+const ECHO_TYPE_CLEAR = 9;
 
 function noop() { return true; }
 
@@ -103,11 +105,15 @@ echo.header = function echoHappy(...messages) {
 }
 
 echo.clear = function() {
-  process.stdout.write('\x1B[2J\x1B[0f');
+  return typeEcho([], ECHO_TYPE_CLEAR);
 }
 
 echo.type = function(type, ...messages) {
   return typeEcho(messages, type);
+}
+
+echo.inline = function(...messages) {
+  return typeEcho(messages, ECHO_TYPE_INLINE);
 }
 
 export default echo;

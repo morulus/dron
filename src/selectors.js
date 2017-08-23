@@ -11,3 +11,7 @@ exports.engineVersion = function engineVersion(state) {
 exports.cwdSelector = function cwdSelector(state) {
   return state[__CONFIG__].pwd;
 }
+
+exports.engineSelector = function engineSelector(state) {
+  return state[__CONFIG__].env ? (state[__CONFIG__].env.engine || {}) : {};
+}

@@ -21,3 +21,5 @@ exports.ERECTOR_LOCAL_DIRS = ['__store__', '__erector__'];
 exports.THROBBER_START = Symbol('THROBBER_START');
 exports.THROBBER_STOP = Symbol('THROBBER_STOP');
 exports.DIALOG = Symbol('DIALOG');
+exports.OPEN_FILE = Symbol('OPEN_FILE');
+exports.OPEN_DIRECTORY = Symbol('OPEN_DIRECTORY');

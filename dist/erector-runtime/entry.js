@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.recycle = exports.cliapp = exports.lint = exports.callback = exports.touch = exports.resolve = exports.readDir = exports.clear = exports.removeDir = exports.removeFile = exports.forkAll = exports.dispatchToChannel = exports.isChannel = exports.eventToChannel = exports.channel = exports.createChannel = exports.mergeChannels = exports.cancel = exports.fork = exports.watch = exports.stringify = exports.pause = exports.getState = exports.isDirectory = exports.copy = exports.calm = exports.each = exports.ejs = exports.inModule = exports.digest = exports.writeJson = exports.writeFileSafe = exports.writeFile = exports.normalize = exports.exec = exports.spawn = exports.run = exports.editFile = exports.readJson = exports.readFile = exports.find = exports.map = exports.createDir = exports.fileExists = exports.pathExists = exports.exit = exports.echo = exports.dispatch = exports.dialog = exports.confirm = exports.applyDispatcher = exports.assignMiddleware = exports.assignState = exports.assignReducer = undefined;
+exports.warning = exports.transform = exports.openDirectory = exports.openFile = exports.recycle = exports.approute = exports.cliapp = exports.lint = exports.callback = exports.touch = exports.resolve = exports.readDir = exports.clear = exports.removeDir = exports.removeFile = exports.forkAll = exports.dispatchToChannel = exports.isChannel = exports.eventToChannel = exports.channel = exports.createChannel = exports.mergeChannels = exports.cancel = exports.fork = exports.watch = exports.stringify = exports.pause = exports.getState = exports.isDirectory = exports.copy = exports.calm = exports.each = exports.ejs = exports.inModule = exports.digest = exports.writeJson = exports.writeFileSafe = exports.writeFile = exports.normalize = exports.exec = exports.spawn = exports.run = exports.editFile = exports.readJson = exports.readFile = exports.find = exports.map = exports.createDir = exports.fileExists = exports.pathExists = exports.exit = exports.echo = exports.dispatch = exports.dialog = exports.confirm = exports.applyDispatcher = exports.assignMiddleware = exports.assignState = exports.assignReducer = undefined;
 
 var _assignReducer2 = require('./helpers/assignReducer');
 
@@ -217,9 +217,29 @@ var _cliapp2 = require('./helpers/cliapp');
 
 var _cliapp3 = _interopRequireDefault(_cliapp2);
 
+var _approute2 = require('./helpers/approute');
+
+var _approute3 = _interopRequireDefault(_approute2);
+
 var _recycle2 = require('./helpers/recycle');
 
 var _recycle3 = _interopRequireDefault(_recycle2);
+
+var _openFile2 = require('./helpers/openFile');
+
+var _openFile3 = _interopRequireDefault(_openFile2);
+
+var _openDirectory2 = require('./helpers/openDirectory');
+
+var _openDirectory3 = _interopRequireDefault(_openDirectory2);
+
+var _transform2 = require('./helpers/transform');
+
+var _transform3 = _interopRequireDefault(_transform2);
+
+var _warning2 = require('./helpers/warning');
+
+var _warning3 = _interopRequireDefault(_warning2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -276,4 +296,9 @@ exports.touch = _touch3.default;
 exports.callback = _callback3.default;
 exports.lint = _lint3.default;
 exports.cliapp = _cliapp3.default;
+exports.approute = _approute3.default;
 exports.recycle = _recycle3.default;
+exports.openFile = _openFile3.default;
+exports.openDirectory = _openDirectory3.default;
+exports.transform = _transform3.default;
+exports.warning = _warning3.default;

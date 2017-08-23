@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 exports.default = pathExists;
 
 var _fs = require('fs');
@@ -36,15 +41,39 @@ function pathExists(pathname) {
   /**
    * @return {boolean}
    */
-  return function* pathExistsChecker(state) {
-    pathname = yield (0, _digest2.default)(pathname);
-    var filepath = _path2.default.resolve(state[_constants.__CONFIG__].pwd, pathname);
-    try {
-      var stats = _fs2.default.lstatSync(pathname);
-      yield true;
-    } catch (e) {
-      yield false;
-    }
-  };
+  return _regenerator2.default.mark(function pathExistsChecker(state) {
+    var filepath, stats;
+    return _regenerator2.default.wrap(function pathExistsChecker$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0, _digest2.default)(pathname);
+
+          case 2:
+            pathname = _context.sent;
+            filepath = _path2.default.resolve(state[_constants.__CONFIG__].pwd, pathname);
+            _context.prev = 4;
+            stats = _fs2.default.lstatSync(pathname);
+            _context.next = 8;
+            return true;
+
+          case 8:
+            _context.next = 14;
+            break;
+
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context['catch'](4);
+            _context.next = 14;
+            return false;
+
+          case 14:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, pathExistsChecker, this, [[4, 10]]);
+  });
 }
 module.exports = exports['default'];

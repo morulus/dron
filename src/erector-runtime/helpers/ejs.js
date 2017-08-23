@@ -1,5 +1,6 @@
 import Ejs from 'ejs';
 import digest from './digest';
+import { allowUnsafeNewFunction } from 'loophole'; // Allow to use new Function
 /**
 * The operator allow you to use ejs compilator (http://ejs.co/).
 *
@@ -17,13 +18,14 @@ import digest from './digest';
 * @param {object} [options] Options for ejs (read ejs docs for ditails)
 */
 function ejs(template, data, options) {
-
   /**
    * @return {string} The compiled document
    */
   return function* $ejs(state) {
     template = yield digest(template);
-    yield Ejs.render(template, "object"===typeof data ? data : state, options||{});
+    yield allowUnsafeNewFunction(function() {
+      return Ejs.render(template, "object"===typeof data ? data : state, options||{});
+    });
   }
 }
 

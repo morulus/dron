@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _stringify = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
 exports.default = writeJson;
 
 var _writeFile = require('./writeFile');
@@ -16,6 +21,6 @@ function writeJson(filename, content) {
   var replacer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   var space = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
 
-  return (0, _writeFile2.default)(filename, JSON.stringify(content, replacer, space), encode);
+  return (0, _writeFile2.default)(filename, (0, _stringify2.default)(content, replacer, space), encode);
 }
 module.exports = exports['default'];

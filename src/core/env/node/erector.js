@@ -32,6 +32,13 @@ const INITIAL_STATE = {
   [__CONFIG__]: {
     babel: {
       enabled: true,
+      runtime: true,
+    },
+    env: {
+      engine: {
+        name: false,
+        ref: null,
+      },
     },
     initialMiddlewares: [],
   }

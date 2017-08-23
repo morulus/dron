@@ -4,47 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function* () {
-  var queue = [];
-  var final = void 0;
-  var enabled = true;
-  var anticipant = void 0;
-  var handler = function handler(action) {
-    if (anticipant) {
-      anticipant(action);
-      anticipant = null;
-    } else {
-      queue.push(action);
-    }
-  };
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
-  var unconnect = yield (0, _connectDispatcher2.default)(handler);
-  var channel = function channel() {
-    if (!enabled) {
-      return final;
-    }
-    if (queue.length) {
-      return queue.shift();
-    } else {
-      return new Promise(function (resolve) {
-        anticipant = resolve;
-      });
-    }
-  };
+var _regenerator2 = _interopRequireDefault(_regenerator);
 
-  channel[_reciprocator.CANCEL] = function (f) {
-    final = f;
-    enabled = false;
-    anticipant = null;
-    queue.split(0, queue.length);
-    unconnect();
-    originCancel(final);
-  };
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
 
-  channel[_reciprocator.RESTANTE] = true;
+var _promise2 = _interopRequireDefault(_promise);
 
-  yield channel;
-};
+exports.default = _callee;
 
 var _connectDispatcher = require('./connectDispatcher');
 
@@ -54,7 +22,7 @@ var _reciprocator = require('reciprocator');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = exports['default'];
+var _marked = [_callee].map(_regenerator2.default.mark);
 
 /**
  * Create a channel which reproduces each action of the system store.
@@ -74,3 +42,64 @@ module.exports = exports['default'];
  *
  * @return {type}  description
  */
+function _callee() {
+  var queue, final, enabled, anticipant, handler, unconnect, channel;
+  return _regenerator2.default.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          queue = [];
+          final = void 0;
+          enabled = true;
+          anticipant = void 0;
+
+          handler = function handler(action) {
+            if (anticipant) {
+              anticipant(action);
+              anticipant = null;
+            } else {
+              queue.push(action);
+            }
+          };
+
+          _context.next = 7;
+          return (0, _connectDispatcher2.default)(handler);
+
+        case 7:
+          unconnect = _context.sent;
+
+          channel = function channel() {
+            if (!enabled) {
+              return final;
+            }
+            if (queue.length) {
+              return queue.shift();
+            } else {
+              return new _promise2.default(function (resolve) {
+                anticipant = resolve;
+              });
+            }
+          };
+
+          channel[_reciprocator.CANCEL] = function (f) {
+            final = f;
+            enabled = false;
+            anticipant = null;
+            queue.split(0, queue.length);
+            unconnect();
+            originCancel(final);
+          };
+
+          channel[_reciprocator.RESTANTE] = true;
+
+          _context.next = 13;
+          return channel;
+
+        case 13:
+        case 'end':
+          return _context.stop();
+      }
+    }
+  }, _marked[0], this);
+}
+module.exports = exports['default'];

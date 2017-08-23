@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 exports.default = calm;
 
 var _dispatch = require('./dispatch');
@@ -30,21 +35,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function calm(subject) {
   var onError = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-  return function* $calm(state) {
-    var next = function callback(promise) {
-      next = promise;
-    };
-    yield (0, _dispatch2.default)({
-      type: _constants.ACTION_RUN,
-      subject: subject,
-      props: state,
-      next: next
-    });
-    yield next.then(function (result) {
-      return result;
-    }).catch("function" === typeof onError ? onError : function () {
-      return onError;
-    });
-  };
+  return _regenerator2.default.mark(function $calm(state) {
+    var next;
+    return _regenerator2.default.wrap(function $calm$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            next = function callback(promise) {
+              next = promise;
+            };
+
+            _context.next = 3;
+            return (0, _dispatch2.default)({
+              type: _constants.ACTION_RUN,
+              subject: subject,
+              props: state,
+              next: next
+            });
+
+          case 3:
+            _context.next = 5;
+            return next.then(function (result) {
+              return result;
+            }).catch("function" === typeof onError ? onError : function () {
+              return onError;
+            });
+
+          case 5:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, $calm, this);
+  });
 }
 module.exports = exports['default'];

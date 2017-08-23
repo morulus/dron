@@ -4,22 +4,57 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 exports.default = function (dirname) {
   var forceDeleteNotEmpty = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-  return function* (state) {
-    var resolvedDirname = yield (0, _digest2.default)(dirname);
-    var absoluteDirname = _path2.default.resolve(state[_constants.__CONFIG__].pwd, resolvedDirname);
-    if (forceDeleteNotEmpty) {
-      unsafeRemoveDirectory(absoluteDirname);
-    } else {
-      if (_fs2.default.readdirSync(absoluteDirname).length) {
-        throw new Error('Directory ' + dirname + ' is not empty');
+  return _regenerator2.default.mark(function _callee(state) {
+    var resolvedDirname, absoluteDirname;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0, _digest2.default)(dirname);
+
+          case 2:
+            resolvedDirname = _context.sent;
+            absoluteDirname = _path2.default.resolve(state[_constants.__CONFIG__].pwd, resolvedDirname);
+
+            if (!forceDeleteNotEmpty) {
+              _context.next = 8;
+              break;
+            }
+
+            unsafeRemoveDirectory(absoluteDirname);
+            _context.next = 11;
+            break;
+
+          case 8:
+            if (!_fs2.default.readdirSync(absoluteDirname).length) {
+              _context.next = 10;
+              break;
+            }
+
+            throw new Error('Directory ' + dirname + ' is not empty');
+
+          case 10:
+            _fs2.default.rmdirSync(absoluteDirname);
+
+          case 11:
+            _context.next = 13;
+            return true;
+
+          case 13:
+          case 'end':
+            return _context.stop();
+        }
       }
-      _fs2.default.rmdirSync(absoluteDirname);
-    }
-    yield true;
-  };
+    }, _callee, this);
+  });
 };
 
 var _digest = require('./digest');

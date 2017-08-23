@@ -4,7 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _extends = _assign2.default || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.default = dialog;
 
@@ -45,48 +53,100 @@ function validateQuestion(q) {
  */
 function dialog(questions) {
   var single = false;
-  return function* payloadedPrompt(defaults, store) {
-    /**
-     * Datafy questions
-     */
-    questions = yield (0, _digest2.default)(questions);
-    /**
-     * Validate question in DEV mode
-     */
-    if (store.getState()[_constants.__CONFIG__].devMode) {
-      if (questions instanceof Array) {
-        if (!~questions.filter(function (q) {
-          return !validateQuestion(q);
-        }).length) {
-          yield new Error("Invalid dialog question format");
+  return _regenerator2.default.mark(function payloadedPrompt(defaults, store) {
+    return _regenerator2.default.wrap(function payloadedPrompt$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0, _digest2.default)(questions);
+
+          case 2:
+            questions = _context.sent;
+
+            if (!store.getState()[_constants.__CONFIG__].devMode) {
+              _context.next = 18;
+              break;
+            }
+
+            if (!(questions instanceof Array)) {
+              _context.next = 10;
+              break;
+            }
+
+            if (~questions.filter(function (q) {
+              return !validateQuestion(q);
+            }).length) {
+              _context.next = 8;
+              break;
+            }
+
+            _context.next = 8;
+            return new Error("Invalid dialog question format");
+
+          case 8:
+            _context.next = 18;
+            break;
+
+          case 10:
+            if (!("object" === typeof questions)) {
+              _context.next = 16;
+              break;
+            }
+
+            if (validateQuestion(questions)) {
+              _context.next = 14;
+              break;
+            }
+
+            _context.next = 14;
+            return new Error("Invalid dialog question format");
+
+          case 14:
+            _context.next = 18;
+            break;
+
+          case 16:
+            _context.next = 18;
+            return new Error("Invalid dialog question type");
+
+          case 18:
+            if ("object" === typeof questions && !(questions instanceof Array)) {
+              single = true;
+              questions = [_extends({}, questions, {
+                name: 'question'
+              })];
+            }
+
+            if (!("object" === typeof defaults)) {
+              _context.next = 23;
+              break;
+            }
+
+            _context.next = 22;
+            return (0, _map2.default)(questions, function (value) {
+              if (defaults.hasOwnProperty(value.name)) {
+                value.default = defaults[value.name];
+              }
+              return value;
+            });
+
+          case 22:
+            questions = _context.sent;
+
+          case 23:
+            return _context.abrupt('return', (0, _dispatch2.default)({
+              type: _constants.DIALOG,
+              questions: questions,
+              single: single
+            }));
+
+          case 24:
+          case 'end':
+            return _context.stop();
         }
-      } else if ("object" === typeof questions) {
-        if (!validateQuestion(questions)) {
-          yield new Error("Invalid dialog question format");
-        }
-      } else {
-        yield new Error("Invalid dialog question type");
       }
-    }
-    if ("object" === typeof questions && !(questions instanceof Array)) {
-      single = true;
-      questions = [_extends({}, questions, {
-        name: 'question'
-      })];
-    }
-    if ("object" === typeof defaults) {
-      questions = yield (0, _map2.default)(questions, function (value) {
-        if (defaults.hasOwnProperty(value.name)) {
-          value.default = defaults[value.name];
-        }
-        return value;
-      });
-    }
-    return (0, _dispatch2.default)({
-      type: _constants.DIALOG,
-      questions: questions,
-      single: single
-    });
-  };
+    }, payloadedPrompt, this);
+  });
 }
 module.exports = exports['default'];

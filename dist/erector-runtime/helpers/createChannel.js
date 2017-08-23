@@ -3,11 +3,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 exports.default = craeteChannel;
 
 var _constants = require('../../constants');
 
 var _reciprocator = require('reciprocator');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Create channel from function observer. The channel is the mechanism which stores data from any observable source. Each time you call channel it gives you one stored item. When the data ends it returns undefined.
@@ -84,9 +91,9 @@ function craeteChannel(observer) {
       return sequence.shift();
     } else {
       if (done) {
-        return Promise.resolve(tail);
+        return _promise2.default.resolve(tail);
       } else {
-        return new Promise(function (resolve, reject) {
+        return new _promise2.default(function (resolve, reject) {
           anticipant = resolve;
         });
       }

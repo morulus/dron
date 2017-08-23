@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = resolveLocalScripts;
 var path = require('path');
-var resolvePath = require("babel-plugin-module-resolver").resolvePath;
+var resolvePath = require('babel-plugin-module-resolver').resolvePath;
 
 function resolveLocalScripts(dirs) {
   return function resolveLocalPath(sourcePath, currentFile, opts) {

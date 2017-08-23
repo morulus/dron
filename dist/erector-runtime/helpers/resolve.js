@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 exports.default = resolve;
 
 var _digest = require('./digest');
@@ -21,6 +26,8 @@ var _path2 = _interopRequireDefault(_path);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _marked = [resolve].map(_regenerator2.default.mark);
+
 /**
  * Resolve path relative project working dir
  *
@@ -37,13 +44,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * const inModulePath = yield resolve.module('./template.js');
  * ```
  */
-function* resolve(relativePath) {
-  var state = yield (0, _getState2.default)();
-  var resolvedDirname = yield (0, _digest2.default)(relativePath);
-  if (typeof resolvedDirname !== 'string') {
-    throw new Error('Path must ba a string');
-  }
-  yield _path2.default.resolve(state[_constants.__CONFIG__].pwd, resolvedDirname);
+function resolve(relativePath) {
+  var state, resolvedDirname;
+  return _regenerator2.default.wrap(function resolve$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return (0, _getState2.default)();
+
+        case 2:
+          state = _context.sent;
+          _context.next = 5;
+          return (0, _digest2.default)(relativePath);
+
+        case 5:
+          resolvedDirname = _context.sent;
+
+          if (!(typeof resolvedDirname !== 'string')) {
+            _context.next = 8;
+            break;
+          }
+
+          throw new Error('Path must ba a string');
+
+        case 8:
+          _context.next = 10;
+          return _path2.default.resolve(state[_constants.__CONFIG__].pwd, resolvedDirname);
+
+        case 10:
+        case 'end':
+          return _context.stop();
+      }
+    }
+  }, _marked[0], this);
 }
 
 resolve.module = function inModule(filename) {

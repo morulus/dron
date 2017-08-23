@@ -3,12 +3,31 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.constants = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _defineProperty2 = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/define-property');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _symbol = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/symbol');
+
+var _symbol2 = _interopRequireDefault(_symbol);
+
+var _extends = _assign2.default || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.default = createErector;
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { (0, _defineProperty3.default)(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var fs = require('fs');
 var path = require('path');
@@ -38,10 +57,17 @@ var ACTION_SET_STATE = constants.ACTION_SET_STATE,
 
 var erectorPackage = require('./../../../../package.json');
 
-var __INITIAL_STATE__ = Symbol('initialState');
+var __INITIAL_STATE__ = (0, _symbol2.default)('initialState');
 var INITIAL_STATE = _defineProperty({}, __CONFIG__, {
   babel: {
-    enabled: true
+    enabled: true,
+    runtime: true
+  },
+  env: {
+    engine: {
+      name: false,
+      ref: null
+    }
   },
   initialMiddlewares: []
 });
@@ -111,7 +137,7 @@ Erector.prototype.run = function (file, props) {
   }
   return singular(entry, props, this[__STORE__]).then(function (result) {
     if (this.errors.length > 0) {
-      return Promise.reject(this.errors[0]);
+      return _promise2.default.reject(this.errors[0]);
     }
     return result;
   }.bind(this));
