@@ -1,6 +1,6 @@
 {
   "name": "erector-base-scripts",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.0",
   "engine": {
     "erector": "1.0.x"
   },

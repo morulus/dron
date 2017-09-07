@@ -1,6 +1,6 @@
 {
   "name": "erector-core-transform-config",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.0",
   "description": "Erector transform configurator",
   "main": "index.js",
   "scripts": {

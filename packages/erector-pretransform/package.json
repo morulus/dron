@@ -1,18 +1,16 @@
 {
   "name": "erector-pretransform",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "test": "./node_modules/.bin/eslint src && ./node_modules/.bin/jest test.js",
-    "build": "gulp",
+    "build": "gulp --gulpfile ./gulpfile.js",
     "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
   "license": "MIT",
-  "devDependencies": {},
-  "peerDependencies": {},
   "dependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
