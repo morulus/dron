@@ -1,6 +1,6 @@
 'use strict';
 
-var _symbol = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/symbol');
+var _symbol = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/symbol');
 
 var _symbol2 = _interopRequireDefault(_symbol);
 

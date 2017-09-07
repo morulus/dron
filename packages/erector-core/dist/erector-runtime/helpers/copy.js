@@ -4,15 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -93,43 +93,44 @@ function copy(source, destination) {
   var opt = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   var encoding = opt.encoding || 'utf-8';
-  return _regenerator2.default.mark(function _callee(state, store) {
-    var resolvedSource, resolvedDestination, isSourceDir;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            resolvedSource = _path2.default.resolve(state[_constants.__CONFIG__].pwd, source);
-            resolvedDestination = _path2.default.resolve(state[_constants.__CONFIG__].pwd, destination);
-            _context.next = 4;
-            return (0, _isDirectory2.default)(resolvedSource);
+  return (/*#__PURE__*/_regenerator2.default.mark(function _callee(state, store) {
+      var resolvedSource, resolvedDestination, isSourceDir;
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              resolvedSource = _path2.default.resolve(state[_constants.__CONFIG__].pwd, source);
+              resolvedDestination = _path2.default.resolve(state[_constants.__CONFIG__].pwd, destination);
+              _context.next = 4;
+              return (0, _isDirectory2.default)(resolvedSource);
 
-          case 4:
-            isSourceDir = _context.sent;
-            _context.next = 7;
-            return (0, _createDir2.default)(isSourceDir ? resolvedDestination : _path2.default.dirname(resolvedDestination));
+            case 4:
+              isSourceDir = _context.sent;
+              _context.next = 7;
+              return (0, _createDir2.default)(isSourceDir ? resolvedDestination : _path2.default.dirname(resolvedDestination));
 
-          case 7:
-            _context.next = 9;
-            return new _promise2.default(function (resolve, reject) {
-              var transform = typeof opt.transform === 'function' ? decorateTransform(store, opt.transform, encoding, reject) : defaultTransform;
-              (0, _ncp.ncp)(resolvedSource, _path2.default.resolve(state[_constants.__CONFIG__].pwd, resolvedDestination), _extends({}, opt, {
-                transform: transform
-              }), function (err) {
-                if (err) {
-                  reject(err);
-                } else {
-                  resolve();
-                }
+            case 7:
+              _context.next = 9;
+              return new _promise2.default(function (resolve, reject) {
+                var transform = typeof opt.transform === 'function' ? decorateTransform(store, opt.transform, encoding, reject) : defaultTransform;
+                (0, _ncp.ncp)(resolvedSource, _path2.default.resolve(state[_constants.__CONFIG__].pwd, resolvedDestination), _extends({}, opt, {
+                  transform: transform
+                }), function (err) {
+                  if (err) {
+                    reject(err);
+                  } else {
+                    resolve();
+                  }
+                });
               });
-            });
 
-          case 9:
-          case 'end':
-            return _context.stop();
+            case 9:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, _callee, this);
-  });
+      }, _callee, this);
+    })
+  );
 }
 module.exports = exports['default'];

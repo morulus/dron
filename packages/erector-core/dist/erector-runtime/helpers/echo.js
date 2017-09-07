@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -36,55 +36,56 @@ function noop() {
 }
 
 function typeEcho(messages, type) {
-  return _regenerator2.default.mark(function _callee() {
-    var i;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            i = 0;
+  return (/*#__PURE__*/_regenerator2.default.mark(function _callee() {
+      var i;
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              i = 0;
 
-          case 1:
-            if (!(i < messages.length)) {
-              _context.next = 9;
+            case 1:
+              if (!(i < messages.length)) {
+                _context.next = 9;
+                break;
+              }
+
+              if (!(typeof messages[i] !== 'string')) {
+                _context.next = 6;
+                break;
+              }
+
+              _context.next = 5;
+              return (0, _digest2.default)(messages[i]);
+
+            case 5:
+              messages[i] = _context.sent;
+
+            case 6:
+              ++i;
+              _context.next = 1;
               break;
-            }
 
-            if (!(typeof messages[i] !== 'string')) {
-              _context.next = 6;
-              break;
-            }
+            case 9:
+              _context.next = 11;
+              return (0, _dispatch2.default)({
+                type: _constants.ECHO,
+                message: messages,
+                messageType: type
+              });
 
-            _context.next = 5;
-            return (0, _digest2.default)(messages[i]);
+            case 11:
+              _context.next = 13;
+              return true;
 
-          case 5:
-            messages[i] = _context.sent;
-
-          case 6:
-            ++i;
-            _context.next = 1;
-            break;
-
-          case 9:
-            _context.next = 11;
-            return (0, _dispatch2.default)({
-              type: _constants.ECHO,
-              message: messages,
-              messageType: type
-            });
-
-          case 11:
-            _context.next = 13;
-            return true;
-
-          case 13:
-          case 'end':
-            return _context.stop();
+            case 13:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, _callee, this);
-  });
+      }, _callee, this);
+    })
+  );
 }
 
 /**

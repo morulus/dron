@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -53,100 +53,101 @@ function validateQuestion(q) {
  */
 function dialog(questions) {
   var single = false;
-  return _regenerator2.default.mark(function payloadedPrompt(defaults, store) {
-    return _regenerator2.default.wrap(function payloadedPrompt$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return (0, _digest2.default)(questions);
+  return (/*#__PURE__*/_regenerator2.default.mark(function payloadedPrompt(defaults, store) {
+      return _regenerator2.default.wrap(function payloadedPrompt$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return (0, _digest2.default)(questions);
 
-          case 2:
-            questions = _context.sent;
+            case 2:
+              questions = _context.sent;
 
-            if (!store.getState()[_constants.__CONFIG__].devMode) {
+              if (!store.getState()[_constants.__CONFIG__].devMode) {
+                _context.next = 18;
+                break;
+              }
+
+              if (!(questions instanceof Array)) {
+                _context.next = 10;
+                break;
+              }
+
+              if (~questions.filter(function (q) {
+                return !validateQuestion(q);
+              }).length) {
+                _context.next = 8;
+                break;
+              }
+
+              _context.next = 8;
+              return new Error("Invalid dialog question format");
+
+            case 8:
               _context.next = 18;
               break;
-            }
 
-            if (!(questions instanceof Array)) {
-              _context.next = 10;
-              break;
-            }
-
-            if (~questions.filter(function (q) {
-              return !validateQuestion(q);
-            }).length) {
-              _context.next = 8;
-              break;
-            }
-
-            _context.next = 8;
-            return new Error("Invalid dialog question format");
-
-          case 8:
-            _context.next = 18;
-            break;
-
-          case 10:
-            if (!("object" === typeof questions)) {
-              _context.next = 16;
-              break;
-            }
-
-            if (validateQuestion(questions)) {
-              _context.next = 14;
-              break;
-            }
-
-            _context.next = 14;
-            return new Error("Invalid dialog question format");
-
-          case 14:
-            _context.next = 18;
-            break;
-
-          case 16:
-            _context.next = 18;
-            return new Error("Invalid dialog question type");
-
-          case 18:
-            if ("object" === typeof questions && !(questions instanceof Array)) {
-              single = true;
-              questions = [_extends({}, questions, {
-                name: 'question'
-              })];
-            }
-
-            if (!("object" === typeof defaults)) {
-              _context.next = 23;
-              break;
-            }
-
-            _context.next = 22;
-            return (0, _map2.default)(questions, function (value) {
-              if (defaults.hasOwnProperty(value.name)) {
-                value.default = defaults[value.name];
+            case 10:
+              if (!("object" === typeof questions)) {
+                _context.next = 16;
+                break;
               }
-              return value;
-            });
 
-          case 22:
-            questions = _context.sent;
+              if (validateQuestion(questions)) {
+                _context.next = 14;
+                break;
+              }
 
-          case 23:
-            return _context.abrupt('return', (0, _dispatch2.default)({
-              type: _constants.DIALOG,
-              questions: questions,
-              single: single
-            }));
+              _context.next = 14;
+              return new Error("Invalid dialog question format");
 
-          case 24:
-          case 'end':
-            return _context.stop();
+            case 14:
+              _context.next = 18;
+              break;
+
+            case 16:
+              _context.next = 18;
+              return new Error("Invalid dialog question type");
+
+            case 18:
+              if ("object" === typeof questions && !(questions instanceof Array)) {
+                single = true;
+                questions = [_extends({}, questions, {
+                  name: 'question'
+                })];
+              }
+
+              if (!("object" === typeof defaults)) {
+                _context.next = 23;
+                break;
+              }
+
+              _context.next = 22;
+              return (0, _map2.default)(questions, function (value) {
+                if (defaults.hasOwnProperty(value.name)) {
+                  value.default = defaults[value.name];
+                }
+                return value;
+              });
+
+            case 22:
+              questions = _context.sent;
+
+            case 23:
+              return _context.abrupt('return', (0, _dispatch2.default)({
+                type: _constants.DIALOG,
+                questions: questions,
+                single: single
+              }));
+
+            case 24:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, payloadedPrompt, this);
-  });
+      }, payloadedPrompt, this);
+    })
+  );
 }
 module.exports = exports['default'];

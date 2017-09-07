@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require("/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator");
+var _regenerator = require("/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _isIterable2 = require("/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/is-iterable");
+var _isIterable2 = require("/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/is-iterable");
 
 var _isIterable3 = _interopRequireDefault(_isIterable2);
 
@@ -16,7 +16,7 @@ exports.default = map;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [map].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(map);
 
 /**
  * Create a new array with the results of executing a handler for every array/object element.
@@ -120,6 +120,6 @@ function map(iterable, handler) {
           return _context.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 module.exports = exports["default"];

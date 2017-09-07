@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -18,7 +18,7 @@ var _constants = require('../../constants');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [fork].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(fork);
 
 /**
  * Fork a task. It will be executed in parallel without blocking the current sequence.
@@ -54,6 +54,6 @@ function fork(sausage) {
           return _context.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 module.exports = exports['default'];

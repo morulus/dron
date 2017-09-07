@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -15,7 +15,9 @@ var _erector = require('erector');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [build, help, entry].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(build),
+    _marked2 = /*#__PURE__*/_regenerator2.default.mark(help),
+    _marked3 = /*#__PURE__*/_regenerator2.default.mark(entry);
 
 var DEFAULT_SRC = './src/index.js';
 var DEFAULT_OUTPUT = './index.js';
@@ -76,7 +78,7 @@ function build(state) {
           return _context.stop();
       }
     }
-  }, _marked[0], this, [[0, 6]]);
+  }, _marked, this, [[0, 6]]);
 }
 
 function help() {
@@ -100,7 +102,7 @@ function help() {
           return _context2.stop();
       }
     }
-  }, _marked[1], this);
+  }, _marked2, this);
 }
 
 function entry(args) {
@@ -148,5 +150,5 @@ function entry(args) {
           return _context3.stop();
       }
     }
-  }, _marked[2], this);
+  }, _marked3, this);
 }

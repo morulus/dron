@@ -4,15 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _defineProperty2 = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/define-property');
+var _defineProperty2 = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/define-property');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -36,7 +36,7 @@ var _reciprocator = require('reciprocator');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [watch].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(watch);
 
 function _defineProperty(obj, key, value) { if (key in obj) { (0, _defineProperty3.default)(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -55,7 +55,7 @@ function watch(target, options) {
             }
           }, options));
           erectedWatcher = _defineProperty({
-            on: _regenerator2.default.mark(function on(eventName) {
+            on: /*#__PURE__*/_regenerator2.default.mark(function on(eventName) {
               var channel, orgCancel;
               return _regenerator2.default.wrap(function on$(_context) {
                 while (1) {
@@ -107,6 +107,6 @@ function watch(target, options) {
           return _context2.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 module.exports = exports['default'];

@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -16,7 +16,7 @@ var _assignMiddleware2 = _interopRequireDefault(_assignMiddleware);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [connectDispatcher].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(connectDispatcher);
 
 function connectDispatcher(handler) {
   return _regenerator2.default.wrap(function connectDispatcher$(_context) {
@@ -39,6 +39,6 @@ function connectDispatcher(handler) {
           return _context.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 module.exports = exports['default'];

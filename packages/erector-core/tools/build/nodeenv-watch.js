@@ -6,7 +6,7 @@ const getBabelConfiguration = require('../getBabelConfiguration.js');
 
 gulp.task('default', () => {
     process.env.BUILD_ENV = 'node';
-    return gulp.src('../../src/**/*.js')
+    return watch('../../src/**/*.js', { ignoreInitial: false })
     .pipe(babel(getBabelConfiguration({
       root: path.resolve(__dirname, '../..'),
       runtime: true,

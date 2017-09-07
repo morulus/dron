@@ -1,19 +1,19 @@
 'use strict';
 
-import _Object$defineProperty from '/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/define-property';
+import _Object$defineProperty from '/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/define-property';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _values = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/values');
+var _values = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/values');
 
 var _values2 = _interopRequireDefault(_values);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _stringify = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/json/stringify');
+var _stringify = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/json/stringify');
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -33,7 +33,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { _Object$defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _marked = [deployScript, deployProjectScript, deployPackage, deployProjectPackage, getModuleType, create, _callee2].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(deployScript),
+    _marked2 = /*#__PURE__*/_regenerator2.default.mark(deployProjectScript),
+    _marked3 = /*#__PURE__*/_regenerator2.default.mark(deployPackage),
+    _marked4 = /*#__PURE__*/_regenerator2.default.mark(deployProjectPackage),
+    _marked5 = /*#__PURE__*/_regenerator2.default.mark(getModuleType),
+    _marked6 = /*#__PURE__*/_regenerator2.default.mark(create),
+    _marked7 = /*#__PURE__*/_regenerator2.default.mark(_callee2);
 
 function isFalse(value) {
   return value === false;
@@ -130,7 +136,7 @@ function deployScript(_ref) {
           return _context.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 
 function deployProjectScript(_ref2) {
@@ -197,7 +203,7 @@ function deployProjectScript(_ref2) {
           return _context2.stop();
       }
     }
-  }, _marked[1], this);
+  }, _marked2, this);
 }
 
 var packageFs = (_packageFs = {}, _defineProperty(_packageFs, 'index.js', SCRIPT_SCAFFOLDING), _defineProperty(_packageFs, 'package.json', PACKAGEJSON_SCAFFOLDING), _packageFs);
@@ -235,7 +241,7 @@ function deployPackage(name, packagePath) {
         case 6:
           state = _context4.sent;
           _context4.next = 9;
-          return (0, _erector.map)(packageFs, _regenerator2.default.mark(function _callee(scaffolding, filename) {
+          return (0, _erector.map)(packageFs, /*#__PURE__*/_regenerator2.default.mark(function _callee(scaffolding, filename) {
             var content, filepath;
             return _regenerator2.default.wrap(function _callee$(_context3) {
               while (1) {
@@ -319,7 +325,7 @@ function deployPackage(name, packagePath) {
           return _context4.stop();
       }
     }
-  }, _marked[2], this);
+  }, _marked3, this);
 }
 
 function deployProjectPackage(_ref3) {
@@ -398,7 +404,7 @@ function deployProjectPackage(_ref3) {
           return _context5.stop();
       }
     }
-  }, _marked[3], this);
+  }, _marked4, this);
 }
 
 function getModuleType(state) {
@@ -434,7 +440,7 @@ function getModuleType(state) {
           return _context6.stop();
       }
     }
-  }, _marked[4], this);
+  }, _marked5, this);
 }
 
 function create(state) {
@@ -486,7 +492,7 @@ function create(state) {
           return _context7.stop();
       }
     }
-  }, _marked[5], this);
+  }, _marked6, this);
 }
 
 function mapArgsToState(args) {
@@ -528,6 +534,6 @@ function _callee2(args) {
           return _context8.stop();
       }
     }
-  }, _marked[6], this);
+  }, _marked7, this);
 }
 module.exports = exports['default'];

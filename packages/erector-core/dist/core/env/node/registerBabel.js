@@ -47,10 +47,10 @@ module.exports = function registerBabel(mwd) {
     "erector/selectors": SELECTORS_PATH,
     "erector": ERECTOR_PATH,
     // "module": mwd, // Deprecated "module", is a nodejs resource
-    "babel-runtime/regenerator": require.resolve('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/regenerator-runtime/runtime-module.js')
+    "babel-runtime/regenerator": require.resolve('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/regenerator-runtime/runtime-module.js')
   };
 
-  var regeneratorRuntime = require.resolve('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/regenerator-runtime/runtime-module.js');
+  var regeneratorRuntime = require.resolve('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/regenerator-runtime/runtime-module.js');
   var _resolveFilename = Module._resolveFilename;
   Module._resolveFilename = function (request, parent, isMain) {
     if (aliases[request]) {

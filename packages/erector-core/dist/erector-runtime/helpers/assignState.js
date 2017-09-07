@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -46,50 +46,51 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @returns {object}
  */
 function assignToState(subject, transform) {
-  return _regenerator2.default.mark(function _callee(state, store) {
-    var next;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            next = function callback(promise) {
-              next = promise;
-            };
+  return (/*#__PURE__*/_regenerator2.default.mark(function _callee(state, store) {
+      var next;
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              next = function callback(promise) {
+                next = promise;
+              };
 
-            _context.next = 3;
-            return (0, _dispatch2.default)({
-              type: _constants.ACTION_RUN,
-              subject: subject,
-              props: state,
-              next: next
-            });
+              _context.next = 3;
+              return (0, _dispatch2.default)({
+                type: _constants.ACTION_RUN,
+                subject: subject,
+                props: state,
+                next: next
+              });
 
-          case 3:
-            _context.next = 5;
-            return next.then(function (props) {
-              var nextProps = transform ? transform(props) : props;
-              if ("object" !== typeof nextProps) {
-                return (0, _exit2.default)('State to assign must be a plain object');
-              } else {
-                return (0, _dispatch2.default)({
-                  type: _constants.ACTION_ASSIGN_STATE,
-                  state: _extends({}, store.getState(), nextProps)
-                });
-              }
-            }).catch(function (e) {
-              throw e;
-            });
+            case 3:
+              _context.next = 5;
+              return next.then(function (props) {
+                var nextProps = transform ? transform(props) : props;
+                if ("object" !== typeof nextProps) {
+                  return (0, _exit2.default)('State to assign must be a plain object');
+                } else {
+                  return (0, _dispatch2.default)({
+                    type: _constants.ACTION_ASSIGN_STATE,
+                    state: _extends({}, store.getState(), nextProps)
+                  });
+                }
+              }).catch(function (e) {
+                throw e;
+              });
 
-          case 5:
-            _context.next = 7;
-            return store.getState();
+            case 5:
+              _context.next = 7;
+              return store.getState();
 
-          case 7:
-          case 'end':
-            return _context.stop();
+            case 7:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, _callee, this);
-  });
+      }, _callee, this);
+    })
+  );
 }
 module.exports = exports['default'];

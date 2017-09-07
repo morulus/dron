@@ -4,15 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _keys = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/keys');
+var _keys = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -65,7 +65,7 @@ function approute(_ref) {
   }
   (0, _erector.warning)(typeof getApi === 'function', 'Application must have api factory. Please specify `getApi` function');
   (0, _erector.warning)(typeof description === 'string', 'Application must have description');
-  var routerapp = _regenerator2.default.mark(function routerapp(args) {
+  var routerapp = /*#__PURE__*/_regenerator2.default.mark(function routerapp(args) {
     var _extractArgsCommand, command, payload, state, api;
 
     return _regenerator2.default.wrap(function routerapp$(_context) {

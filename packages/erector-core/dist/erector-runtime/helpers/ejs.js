@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -41,28 +41,29 @@ function ejs(template, data, options) {
   /**
    * @return {string} The compiled document
    */
-  return _regenerator2.default.mark(function $ejs(state) {
-    return _regenerator2.default.wrap(function $ejs$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return (0, _digest2.default)(template);
+  return (/*#__PURE__*/_regenerator2.default.mark(function $ejs(state) {
+      return _regenerator2.default.wrap(function $ejs$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return (0, _digest2.default)(template);
 
-          case 2:
-            template = _context.sent;
-            _context.next = 5;
-            return (0, _loophole.allowUnsafeNewFunction)(function () {
-              return _ejs2.default.render(template, "object" === typeof data ? data : state, options || {});
-            });
+            case 2:
+              template = _context.sent;
+              _context.next = 5;
+              return (0, _loophole.allowUnsafeNewFunction)(function () {
+                return _ejs2.default.render(template, "object" === typeof data ? data : state, options || {});
+              });
 
-          case 5:
-          case 'end':
-            return _context.stop();
+            case 5:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, $ejs, this);
-  });
+      }, $ejs, this);
+    })
+  );
 }
 
 /**

@@ -63,46 +63,47 @@ function babelify(src, dist, _ref) {
       ignoreInitial = _ref$ignoreInitial === undefined ? false : _ref$ignoreInitial;
 
   var starter = watch ? watchStart(ignoreInitial) : srcStart();
-  return _regenerator2.default.mark(function _callee() {
-    var taskName;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            taskName = (0, _uuid2.default)();
-            _context.next = 3;
-            return _erector.echo.log('taskName', taskName);
+  return (/*#__PURE__*/_regenerator2.default.mark(function _callee() {
+      var taskName;
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              taskName = (0, _uuid2.default)();
+              _context.next = 3;
+              return _erector.echo.log('taskName', taskName);
 
-          case 3:
-            return _context.abrupt('return', (0, _erector.createChannel)(function (next) {
-              _gulp2.default.task(taskName, function () {
-                var start = new Date().getTime();
-                process.env.BUILD_ENV = 'node';
-                starter(src, function (stream) {
-                  stream.pipe((0, _gulpBabel2.default)((0, _erectorCoreTransformConfig2.default)({
-                    root: _path2.default.resolve(__dirname, '../'),
-                    runtime: false
-                  }))).pipe(_gulp2.default.dest(dist));
-                  stream.on('end', function (e) {
-                    var stats = {
-                      ms: new Date().getTime() - start
-                    };
-                    next(stats);
-                  });
-                  stream.on('error', function (err) {
-                    throw err;
+            case 3:
+              return _context.abrupt('return', (0, _erector.createChannel)(function (next) {
+                _gulp2.default.task(taskName, function () {
+                  var start = new Date().getTime();
+                  process.env.BUILD_ENV = 'node';
+                  starter(src, function (stream) {
+                    stream.pipe((0, _gulpBabel2.default)((0, _erectorCoreTransformConfig2.default)({
+                      root: _path2.default.resolve(__dirname, '../'),
+                      runtime: false
+                    }))).pipe(_gulp2.default.dest(dist));
+                    stream.on('end', function (e) {
+                      var stats = {
+                        ms: new Date().getTime() - start
+                      };
+                      next(stats);
+                    });
+                    stream.on('error', function (err) {
+                      throw err;
+                    });
                   });
                 });
-              });
-              _gulp2.default.start.apply(_gulp2.default, [taskName]);
-            }));
+                _gulp2.default.start.apply(_gulp2.default, [taskName]);
+              }));
 
-          case 4:
-          case 'end':
-            return _context.stop();
+            case 4:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, _callee, this);
-  });
+      }, _callee, this);
+    })
+  );
 }
 module.exports = exports['default'];

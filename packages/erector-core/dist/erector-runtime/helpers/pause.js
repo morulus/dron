@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _promise = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
+var _promise = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -28,7 +28,7 @@ var _reciprocator = require('reciprocator');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [pause].map(_regenerator2.default.mark); // import setupThrobber from 'cli-color/throbber';
+var _marked = /*#__PURE__*/_regenerator2.default.mark(pause); // import setupThrobber from 'cli-color/throbber';
 
 
 //
@@ -62,7 +62,7 @@ function pause() {
           return (0, _fork2.default)(function () {
             return new _promise2.default(function (resolve) {
               setTimeout(function () {
-                resolve(_regenerator2.default.mark(function _callee() {
+                resolve( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
                   return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                       switch (_context.prev = _context.next) {
@@ -91,55 +91,56 @@ function pause() {
           callbackFn = function callbackFn() {
             var postDelay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-            return _regenerator2.default.mark(function _callee3() {
-              return _regenerator2.default.wrap(function _callee3$(_context3) {
-                while (1) {
-                  switch (_context3.prev = _context3.next) {
-                    case 0:
-                      if (!postDelay) {
-                        _context3.next = 4;
-                        break;
-                      }
+            return (/*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+                return _regenerator2.default.wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        if (!postDelay) {
+                          _context3.next = 4;
+                          break;
+                        }
 
-                      return _context3.abrupt('return', new _promise2.default(function (resolve) {
-                        setTimeout(function () {
-                          resolve(_regenerator2.default.mark(function _callee2() {
-                            return _regenerator2.default.wrap(function _callee2$(_context2) {
-                              while (1) {
-                                switch (_context2.prev = _context2.next) {
-                                  case 0:
-                                    _context2.next = 2;
-                                    return _echo2.default.type(_constants.THROBBER_STOP, 'done');
+                        return _context3.abrupt('return', new _promise2.default(function (resolve) {
+                          setTimeout(function () {
+                            resolve( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+                              return _regenerator2.default.wrap(function _callee2$(_context2) {
+                                while (1) {
+                                  switch (_context2.prev = _context2.next) {
+                                    case 0:
+                                      _context2.next = 2;
+                                      return _echo2.default.type(_constants.THROBBER_STOP, 'done');
 
-                                  case 2:
-                                    outsideResolver();
-                                    return _context2.abrupt('return', new Date().getTime() - start);
+                                    case 2:
+                                      outsideResolver();
+                                      return _context2.abrupt('return', new Date().getTime() - start);
 
-                                  case 4:
-                                  case 'end':
-                                    return _context2.stop();
+                                    case 4:
+                                    case 'end':
+                                      return _context2.stop();
+                                  }
                                 }
-                              }
-                            }, _callee2, this);
-                          }));
-                        }, postDelay);
-                      }));
+                              }, _callee2, this);
+                            }));
+                          }, postDelay);
+                        }));
 
-                    case 4:
-                      _context3.next = 6;
-                      return _echo2.default.type(_constants.THROBBER_STOP, 'done');
+                      case 4:
+                        _context3.next = 6;
+                        return _echo2.default.type(_constants.THROBBER_STOP, 'done');
 
-                    case 6:
-                      outsideResolver();
-                      return _context3.abrupt('return', new Date().getTime() - start);
+                      case 6:
+                        outsideResolver();
+                        return _context3.abrupt('return', new Date().getTime() - start);
 
-                    case 8:
-                    case 'end':
-                      return _context3.stop();
+                      case 8:
+                      case 'end':
+                        return _context3.stop();
+                    }
                   }
-                }
-              }, _callee3, this);
-            });
+                }, _callee3, this);
+              })
+            );
           };
 
           callbackFn[_reciprocator.RESTANTE] = true;
@@ -150,6 +151,6 @@ function pause() {
           return _context4.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 module.exports = exports['default'];

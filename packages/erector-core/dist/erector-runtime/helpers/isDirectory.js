@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -39,39 +39,40 @@ function isDirectory(dirname) {
   /**
    * @return {boolean}
    */
-  return _regenerator2.default.mark(function _isDirectory(state) {
-    var filepath, stats;
-    return _regenerator2.default.wrap(function _isDirectory$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return (0, _digest2.default)(dirname);
+  return (/*#__PURE__*/_regenerator2.default.mark(function _isDirectory(state) {
+      var filepath, stats;
+      return _regenerator2.default.wrap(function _isDirectory$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return (0, _digest2.default)(dirname);
 
-          case 2:
-            dirname = _context.sent;
-            filepath = _path2.default.resolve(state[_constants.__CONFIG__].pwd, dirname);
-            _context.prev = 4;
-            stats = _fs2.default.lstatSync(filepath);
-            _context.next = 8;
-            return stats.isDirectory();
+            case 2:
+              dirname = _context.sent;
+              filepath = _path2.default.resolve(state[_constants.__CONFIG__].pwd, dirname);
+              _context.prev = 4;
+              stats = _fs2.default.lstatSync(filepath);
+              _context.next = 8;
+              return stats.isDirectory();
 
-          case 8:
-            _context.next = 14;
-            break;
+            case 8:
+              _context.next = 14;
+              break;
 
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context['catch'](4);
-            _context.next = 14;
-            return false;
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context['catch'](4);
+              _context.next = 14;
+              return false;
 
-          case 14:
-          case 'end':
-            return _context.stop();
+            case 14:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, _isDirectory, this, [[4, 10]]);
-  });
+      }, _isDirectory, this, [[4, 10]]);
+    })
+  );
 }
 module.exports = exports['default'];

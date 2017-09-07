@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -54,7 +54,7 @@ function cliapp(app) {
   if (typeOfWorker !== 'function') {
     throw new Error('cliapp expects worker to be a function, ' + typeOfWorker + ' given');
   }
-  var cliApplication = _regenerator2.default.mark(function cliApplication(args) {
+  var cliApplication = /*#__PURE__*/_regenerator2.default.mark(function cliApplication(args) {
     var initialState;
     return _regenerator2.default.wrap(function cliApplication$(_context) {
       while (1) {

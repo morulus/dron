@@ -4,27 +4,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _isIterable2 = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/is-iterable');
+var _isIterable2 = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/is-iterable');
 
 var _isIterable3 = _interopRequireDefault(_isIterable2);
 
-var _getIterator2 = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/get-iterator');
+var _getIterator2 = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/get-iterator');
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-var _assign = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
+var _assign = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _create = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/create');
+var _create = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/create');
 
 var _create2 = _interopRequireDefault(_create);
 
-var _keys = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/core-js/object/keys');
+var _keys = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -78,7 +78,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [fromPlugin, fromRule, eslint].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(fromPlugin),
+    _marked2 = /*#__PURE__*/_regenerator2.default.mark(fromRule),
+    _marked3 = /*#__PURE__*/_regenerator2.default.mark(eslint);
 
 function fromPlugin(name, plugin, parserOptions) {
   var state, cwd, rules, cli;
@@ -121,7 +123,7 @@ function fromPlugin(name, plugin, parserOptions) {
           _context4.next = 10;
           return (0, _create2.default)(cli, {
             lint: {
-              value: _regenerator2.default.mark(function value(files, autoFix) {
+              value: /*#__PURE__*/_regenerator2.default.mark(function value(files, autoFix) {
                 var filenames, report, success, _data, _data2, file, cb, filename, _report;
 
                 return _regenerator2.default.wrap(function value$(_context2) {
@@ -142,7 +144,7 @@ function fromPlugin(name, plugin, parserOptions) {
                         filenames = typeof files === 'string' ? [files] : files;
                         report = cli.executeOnFiles(filenames);
                         _context2.next = 8;
-                        return (0, _map2.default)(report.results, _regenerator2.default.mark(function _callee(result, index) {
+                        return (0, _map2.default)(report.results, /*#__PURE__*/_regenerator2.default.mark(function _callee(result, index) {
                           return _regenerator2.default.wrap(function _callee$(_context) {
                             while (1) {
                               switch (_context.prev = _context.next) {
@@ -309,7 +311,7 @@ function fromPlugin(name, plugin, parserOptions) {
               })
             },
             fix: {
-              value: _regenerator2.default.mark(function value(files) {
+              value: /*#__PURE__*/_regenerator2.default.mark(function value(files) {
                 return _regenerator2.default.wrap(function value$(_context3) {
                   while (1) {
                     switch (_context3.prev = _context3.next) {
@@ -331,7 +333,7 @@ function fromPlugin(name, plugin, parserOptions) {
           return _context4.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 
 function fromRule(rule, parserOptions) {
@@ -357,7 +359,7 @@ function fromRule(rule, parserOptions) {
           return _context5.stop();
       }
     }
-  }, _marked[1], this);
+  }, _marked2, this);
 }
 
 /**
@@ -382,7 +384,7 @@ function eslint() {
           return _context6.stop();
       }
     }
-  }, _marked[2], this);
+  }, _marked3, this);
 }
 
 eslint.fromPlugin = fromPlugin;

@@ -6,10 +6,14 @@ const config = require('../erector-core-transform-config');
 gulp.task('default', () => {
     const start = new Date().getTime();
     process.env.BUILD_ENV = 'node';
-    gulp.src('./src/**/*.js')
-    .pipe(babel(config({
+    const babelConfig = config({
       root: path.resolve(__dirname, '../'),
       runtime: false,
-    })))
-    .pipe(gulp.dest('./dist'));
+    });
+    return gulp.src('./src/**/*.js')
+    .pipe(babel(babelConfig))
+    .pipe(gulp.dest('./dist'))
+    .on('done', function() {
+      console.log('DONE!!!');
+    });
 });

@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/node_modules/erector-core-transform-config/node_modules/babel-runtime/regenerator');
+var _regenerator = require('/Users/morulus/Work/morulus/projects/erector/packages/erector-core-transform-config/node_modules/babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
@@ -24,7 +24,7 @@ var _digest2 = _interopRequireDefault(_digest);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [editFile].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(editFile);
 
 /**
  * Read file, apply transforms, write it back.
@@ -77,6 +77,6 @@ function editFile(filename, editor) {
           return _context.stop();
       }
     }
-  }, _marked[0], this, [[5, 11]]);
+  }, _marked, this, [[5, 11]]);
 }
 module.exports = exports['default'];
