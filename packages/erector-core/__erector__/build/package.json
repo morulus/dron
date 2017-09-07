@@ -1,0 +1,17 @@
+{
+  "name": "build",
+  "version": "0.1.0",
+  "description": "Build erector",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./linters/**/test.js"
+  },
+  "author": "Vladimir Kalmykov",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^7.2.1",
+    "eslint": "^3.18.0",
+    "eslint-plugin-helper-unit-test": "file:linters/helper-unit-test",
+    "tape": "^4.6.3"
+  }
+}

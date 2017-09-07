@@ -1,0 +1,22 @@
+{
+  "name": "erector-node-utils",
+  "version": "1.0.0-alpha",
+  "description": "Erector node utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:morulus/erector-node-utils.git"
+  },
+  "keywords": [
+    "erector"
+  ],
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "find-parent-dir": "^0.3.0",
+    "requireg": "^0.1.7"
+  }
+}

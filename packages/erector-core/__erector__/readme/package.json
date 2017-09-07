@@ -1,0 +1,17 @@
+{
+  "name": "readme",
+  "version": "0.1.0",
+  "description": "Generate README by project files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "erector"
+  ],
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jsdoc-api": "^3.0.0"
+  }
+}

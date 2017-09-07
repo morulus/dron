@@ -1,55 +1,25 @@
 {
+  "devDependencies": {
+    "lerna": "^2.1.0"
+  },
   "name": "erector",
-  "version": "0.1.2",
-  "description": "Node.js utility maker",
-  "main": "./Dron.js",
+  "version": "1.0.0",
+  "description": "Generators based engine",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Vladimir Kalmykov <luciusmorulus@gmail.com>",
-  "license": "BSD-2-clause",
-  "dependencies": {
-    "ansi-styles": "^2.2.1",
-    "cross-spawn": "^5.0.1",
-    "ejs": "^2.5.3",
-    "inquirer": "^1.2.3",
-    "lodash.isplainobject": "^4.0.6",
-    "reciprocator": "github:morulus/reciprocator",
-    "redux": "^3.6.0",
-    "requireg": "^0.1.6"
-  },
-  "devDependencies": {
-    "babel-plugin-add-module-exports": "0.2.1",
-    "babel-plugin-module-resolver": "2.3.0",
-    "babel-plugin-transform-object-assign": "^6.8.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "6.18.0",
-    "babel-preset-stage-0": "^6.16.0",
-    "babel-preset-stage-1": "^6.16.0",
-    "babel-preset-stage-2": "^6.18.0",
-    "babel-preset-stage-3": "^6.17.0",
-    "babel-register": "6.18.0"
-  },
-  "keywords": [
-    "cli-app",
-    "cli",
-    "development",
-    "dev",
-    "build",
-    "web",
-    "tool",
-    "scaffold",
-    "generator",
-    "generate",
-    "app",
-    "erector"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/morulus/erector.git"
   },
+  "keywords": [
+    "erector"
+  ],
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/erectorjs/erector/issues"
+    "url": "https://github.com/morulus/erector/issues"
   },
-  "homepage": "https://github.com/erectorjs/erector#readme"
+  "homepage": "https://github.com/morulus/erector#readme"
 }

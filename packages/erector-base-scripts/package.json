@@ -1,0 +1,21 @@
+{
+  "name": "erector-base-scripts",
+  "version": "1.0.0-alpha",
+  "engine": {
+    "erector": "1.0.x"
+  },
+  "description": "Erector base scripts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "erect build"
+  },
+  "keywords": [
+    "erector",
+    "scripts"
+  ],
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "erector-node-utils": "file:///Users/morulus/Work/morulus/projects/erector-node-utils"
+  }
+}

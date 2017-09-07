@@ -1,0 +1,25 @@
+{
+  "name": "erector-cli",
+  "version": "1.0.0-alpha",
+  "description": "Erector command line interface",
+  "main": "lib/Cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "erect"
+  },
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "BSD-2-clause",
+  "bin": {
+    "erect": "index.js",
+    "erector": "index.js"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "cli-color": "^1.2.0",
+    "erector": "^1.0.0-beta.1",
+    "erector-node-utils": "^1.0.0-beta.2",
+    "find-parent-dir": "^0.3.0",
+    "inquirer": "^3.2.1",
+    "minimist": "^1.1.3"
+  }
+}
