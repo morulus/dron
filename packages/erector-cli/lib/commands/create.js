@@ -1,5 +1,5 @@
 const path = require('path');
-const erector = require("./../../../erector/dist/app.js")
+const erector = require("erector")
 const args = require('minimist')(process.argv.slice(2));
 const sideeffects = require('../sideeffects.js');
 const middlewares = require('../middlewares.js');

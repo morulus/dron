@@ -1,4 +1,4 @@
-const ECHO = require('./../../erector').constants.ECHO;
+const ECHO = require('erector-core').constants.ECHO;
 const clc = require('cli-color');
 
 const ECHO_TYPE_DEFAULT = 0;

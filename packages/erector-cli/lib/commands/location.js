@@ -1,5 +1,5 @@
 const path = require('path');
-const resolveModuleLocation = require('/Users/morulus/Work/morulus/projects/erector-node-utils/resolveModuleLocation');
+const resolveModuleLocation = require('erector-node-utils/resolveModuleLocation');
 const log = require('../log.js');
 
 module.exports = function(args) {

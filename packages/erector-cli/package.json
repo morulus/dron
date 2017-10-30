@@ -15,10 +15,16 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "cli-color": "^1.2.0",
+    "co": "^4.6.0",
     "erector": "^1.0.0-beta.1",
+    "erector-core": "1.0.0-alpha.0",
     "erector-node-utils": "^1.0.0-beta.2",
     "find-parent-dir": "^0.3.0",
+    "github-base": "^0.5.4",
     "inquirer": "^3.2.1",
-    "minimist": "^1.1.3"
+    "minimist": "^1.1.3",
+    "mv": "^2.1.1",
+    "rimraf": "^2.6.2",
+    "uuid4": "^1.0.0"
   }
 }

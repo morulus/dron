@@ -1,4 +1,4 @@
-const DIALOG = require('./../../erector').constants.DIALOG;
+const DIALOG = require('erector-core').constants.DIALOG;
 const inquirer = require('inquirer');
 
 module.exports = function middlewares(store) {

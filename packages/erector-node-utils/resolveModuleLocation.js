@@ -31,14 +31,13 @@ module.exports = function resolveModuleLocation(moduleName, cwd, opt) {
   return Promise.resolve()
   .then(function() {
     if (typeof opt.paths === 'object') {
-      console.log('Search scripts in directories')
       return searchScriptInDirectories(moduleName)(opt.paths);
     }
   })
   .catch(function() {
     const localFile = path.resolve(cwd, moduleName);
     if (isFileSync(localFile)) {
-      resolve(localFile);
+      return localFile;
     } else {
       return searchLocalErectorDisposition(cwd)
       .then(searchScriptInDirectories(moduleName))
